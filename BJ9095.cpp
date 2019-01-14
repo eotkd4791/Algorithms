@@ -21,9 +21,9 @@ int count(int x) {
 
 int main() {
 	int T = 0;
-	int n[10]= {};												//ÀÔ·Â¹ŞÀº °ª
+	int n[10]= {};												//ì…ë ¥ë°›ì€ ê°’
 	
-	scanf_s("%d", &T);											//Å×½ºÆ® ÄÉÀÌ½º °¹¼ö
+	scanf_s("%d", &T);											//í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ ê°¯ìˆ˜
 
 	for (int i = 0; i < T; i++) {
 		scanf_s("%d", &n[i]);
