@@ -17,7 +17,7 @@ int main() {
 		else printf("%d", a);
 	}
 
-	else {								//a<=b °¡Á¤
+	else {								
 
 		if (b > c) {
 			
