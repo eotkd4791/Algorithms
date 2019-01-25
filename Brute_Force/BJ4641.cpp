@@ -37,38 +37,3 @@ int main() {
 	}
 	return 0;
 }
-
-
-#include <iostream>
-#include <cstring>
-using namespace std;
-
-int main() {
-	int arr[1000] = {};
-	int cnt = 0;
-	int i = 0;
-
-	while (1) {
-		for (i = 0; i < 1000; i++) {
-			scanf("%d", &arr[i]);
-			if (arr[i] == 0 || arr[i] == -1) break;
-		}
-		if (arr[i] == -1)
-			break;
-		if (arr[i] == 0) {
-			for (int k = 0; arr[k] != 0; k++) {
-				for (int j = 0; arr[j] != 0; j++) {
-					if (arr[j] == arr[k] * 2) {
-						cnt++;
-					}
-				}
-			}
-			printf("%d\n", cnt);
-			cnt = 0;
-			memset(arr, 0, sizeof(arr));
-			i = 0;
-		}
-
-	}
-	return 0;
-}
