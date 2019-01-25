@@ -36,8 +36,3 @@ int main() {
 		}
 	}
 	return 0;
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> a2c02ee1ee44f3096940a8d65fc848c2e69c44de
