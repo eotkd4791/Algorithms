@@ -10,7 +10,7 @@
 #include <iostream>
 #include <algorithm>					//sort
 #include <cstring>					//visited배열 초기화 memset
-#include <queue>					/BFS를 구현하기 위해 필요한 queue
+#include <queue>					//BFS를 구현하기 위해 필요한 queue
 #include <vector>					//줄 긋기
 using namespace std;
 
