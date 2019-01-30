@@ -54,10 +54,10 @@ int main() {
 	}
 	for (int i = 1; i <= N; i++) {
 		sort(adj[i].begin(), adj[i].end());	//값이 차례대로 입력되지 않거나 방문순서가 꼬이는 것을 방지하기위해 정렬한다.
-	}																				//adj에 들어있는 내용을 인덱스마다 정렬하기 위해서 for문안에서 구현한다.
+	}						//adj에 들어있는 내용을 인덱스마다 정렬하기 위해서 for문안에서 구현한다.
 	DFS(V);
 	printf("\n");
-	memset(visited, 0, sizeof(visited));	//BFS들어가기 전에 visited배열 초기화
+	memset(visited, 0, sizeof(visited));		//BFS들어가기 전에 visited배열 초기화
 	BFS(V);
 	printf("\n");
 	return 0;
