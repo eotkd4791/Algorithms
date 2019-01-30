@@ -1,17 +1,17 @@
-//-DFS & BFS ±¸ÇöÇÏ´Â ¹®Á¦ BJ1260-
-//Á¤Á¡ÀÇ °¹¼öN, °£¼±ÀÇ °¹¼öM, Å½»öÀ» ½ÃÀÛÇÏ´Â Á¡V.
-//adj[1]¡æ2¡æ3¡æ4
-//adj[2]¡æ1¡æ4
-//adj[3]¡æ1¡æ4
-//adj[4]¡æ1¡æ2¡æ3
+//-DFS & BFS êµ¬í˜„í•˜ëŠ” ë¬¸ì œ BJ1260-
+//ì •ì ì˜ ê°¯ìˆ˜N, ê°„ì„ ì˜ ê°¯ìˆ˜M, íƒìƒ‰ì„ ì‹œì‘í•˜ëŠ” ì V.
+//adj[1]â†’2â†’3â†’4
+//adj[2]â†’1â†’4
+//adj[3]â†’1â†’4
+//adj[4]â†’1â†’2â†’3
 //
-//VectorÇÔ¼ö¸¦ ÀÌ¿ëÇØ¼­ ±×·¡ÇÁ¸¦ ¸¸µç´Ù. <mainÇÔ¼ö>
+//Vectorí•¨ìˆ˜ë¥¼ ì´ìš©í•´ì„œ ê·¸ë˜í”„ë¥¼ ë§Œë“ ë‹¤. <mainí•¨ìˆ˜>
 
 #include <iostream>
-#include <algorithm>									//sort
-#include <cstring>										//visited¹è¿­ ÃÊ±âÈ­ memset
-#include <queue>										//BFS¸¦ ±¸ÇöÇÏ±â À§ÇØ ÇÊ¿äÇÑ queue
-#include <vector>										//ÁÙ ±ß±â
+#include <algorithm>					//sort
+#include <cstring>					//visitedë°°ì—´ ì´ˆê¸°í™” memset
+#include <queue>					/BFSë¥¼ êµ¬í˜„í•˜ê¸° ìœ„í•´ í•„ìš”í•œ queue
+#include <vector>					//ì¤„ ê¸‹ê¸°
 using namespace std;
 
 int N, M, V, a, b;
@@ -19,28 +19,28 @@ int visited[1005];
 queue <int> q;				
 vector <vector <int>> adj(1005);
 
-void DFS (int now) {											//DFS ±íÀÌ¿ì¼±Å½»ö ÇÔ¼ö
-	visited[now] = 1;											//visited¹è¿­À» dp¿¡¼­ check¹è¿­Ã³·³ ÀÌ¿ëÇÑ´Ù. ÀÌ¹Ì ¹æ¹®ÇßÀ¸¸é 1 ¾Æ´Ï¸é 0.
+void DFS (int now) {					//DFS ê¹Šì´ìš°ì„ íƒìƒ‰ í•¨ìˆ˜
+	visited[now] = 1;				//visitedë°°ì—´ì„ dpì—ì„œ checkë°°ì—´ì²˜ëŸ¼ ì´ìš©í•œë‹¤. ì´ë¯¸ ë°©ë¬¸í–ˆìœ¼ë©´ 1 ì•„ë‹ˆë©´ 0.
 	printf("%d ", now);
-	for (int i = 0; i <adj[now].size(); i++) {				//adjº¤ÅÍ¹è¿­ÀÇ Å©±â¸¸Å­ for¹®À» µ¹¸°´Ù.
+	for (int i = 0; i <adj[now].size(); i++) {	//adjë²¡í„°ë°°ì—´ì˜ í¬ê¸°ë§Œí¼ forë¬¸ì„ ëŒë¦°ë‹¤.
 		int next = adj[now][i];
-		if (visited[next] == 0) DFS(next);					//¹æ¹®ÇÏÁö ¾Ê¾Ò´Ù¸é next¸¦ ¸Å°³º¯¼ö»ï¾Æ ÇÔ¼ö¸¦ µ¹¸°´Ù.
+		if (visited[next] == 0) DFS(next);	//ë°©ë¬¸í•˜ì§€ ì•Šì•˜ë‹¤ë©´ nextë¥¼ ë§¤ê°œë³€ìˆ˜ì‚¼ì•„ í•¨ìˆ˜ë¥¼ ëŒë¦°ë‹¤.
 	}
 }
 
-void BFS(int start) {												//BFS ³Êºñ¿ì¼±Å½»ö ÇÔ¼ö
+void BFS(int start) {					//BFS ë„ˆë¹„ìš°ì„ íƒìƒ‰ í•¨ìˆ˜
 	visited[start] = 1;										
-	q.push(start);													//q.pushÇÔ¼ö¸¦ ÀÌ¿ëÇØ ¸Å°³º¯¼ö·Î µé¾î¿Â °ªÀ» Queue¿¡ ÀúÀåÇÑ´Ù.
-	while (q.empty() == 0) {									//q.emptyÇÔ¼ö´Â Queue¿¡ ¾Æ¹«°Íµµ ¾ø´Ù¸é 1, ³»¿ëÀÌ ÀÖ´Ù¸é 0À» ¹İÈ¯ÇÑ´Ù.
-		int now = q.front();										//Queue¿¡ ¾Æ¹«°Íµµ ¾øÀ»¶§±îÁö ¹İº¹¹®À» ½ÇÇàÇÑ´Ù.
-		q.pop();														//q.popÇÔ¼ö¸¦ ÀÌ¿ëÇØ¼­ QueueÀÇ °¡Àå ¾ÕÀÚ¸®ÀÇ °ª(»õ·Ó°Ô ±âÁØÀÌ µÇ´Â Á¤Á¡)À» »©ÁØ´Ù.
-		printf("%d ", now);										
+	q.push(start);					//q.pushí•¨ìˆ˜ë¥¼ ì´ìš©í•´ ë§¤ê°œë³€ìˆ˜ë¡œ ë“¤ì–´ì˜¨ ê°’ì„ Queueì— ì €ì¥í•œë‹¤.
+	while (q.empty() == 0) {			//q.emptyí•¨ìˆ˜ëŠ” Queueì— ì•„ë¬´ê²ƒë„ ì—†ë‹¤ë©´ 1, ë‚´ìš©ì´ ìˆë‹¤ë©´ 0ì„ ë°˜í™˜í•œë‹¤.
+		int now = q.front();			//Queueì— ì•„ë¬´ê²ƒë„ ì—†ì„ë•Œê¹Œì§€ ë°˜ë³µë¬¸ì„ ì‹¤í–‰í•œë‹¤.
+		q.pop();				//q.popí•¨ìˆ˜ë¥¼ ì´ìš©í•´ì„œ Queueì˜ ê°€ì¥ ì•ìë¦¬ì˜ ê°’(ìƒˆë¡­ê²Œ ê¸°ì¤€ì´ ë˜ëŠ” ì •ì )ì„ ë¹¼ì¤€ë‹¤.
+		printf("%d ", now);
 		for (int i = 0; i <adj[now].size(); i++) {
 			int next = adj[now][i];
 			if (visited[next] == 0) {
 				visited[next] = 1;
-				q.push(next);										//Queue¿¡´Â ´ÙÀ½¹ø¿¡ Å½»öÇÒ Á¤Á¡µéÀÌ µé¾î°¡ ÀÖ°í, ¸ğµç Å½»öÀÌ ³¡³ª¸é Queue°¡ ºñ¿öÁö°í,
-			}															//while¹®À» ºüÁ®³ª¿À°Ô µÈ´Ù.
+				q.push(next);		//Queueì—ëŠ” ë‹¤ìŒë²ˆì— íƒìƒ‰í•  ì •ì ë“¤ì´ ë“¤ì–´ê°€ ìˆê³ , ëª¨ë“  íƒìƒ‰ì´ ëë‚˜ë©´ Queueê°€ ë¹„ì›Œì§€ê³ ,
+			}				//whileë¬¸ì„ ë¹ ì ¸ë‚˜ì˜¤ê²Œ ëœë‹¤.
 		}
 	}
 }
@@ -49,15 +49,15 @@ int main() {
 	scanf("%d%d%d", &N, &M, &V);
 	for (int i = 0; i < M; i++) {
 		scanf("%d%d", &a, &b);
-		adj[a].push_back(b);													//Á¤Á¡ÀÇ ÁÂÇ¥ a,b¸¦ push_backÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© ¿¬°áÇØÁØ´Ù.
+		adj[a].push_back(b);			//ì •ì ì˜ ì¢Œí‘œ a,bë¥¼ push_backí•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ ì—°ê²°í•´ì¤€ë‹¤.
 		adj[b].push_back(a);													
 	}
 	for (int i = 1; i <= N; i++) {
-		sort(adj[i].begin(), adj[i].end());								//°ªÀÌ Â÷·Ê´ë·Î ÀÔ·ÂµÇÁö ¾Ê°Å³ª ¹æ¹®¼ø¼­°¡ ²¿ÀÌ´Â °ÍÀ» ¹æÁöÇÏ±âÀ§ÇØ Á¤·ÄÇÑ´Ù.
-	}																				//adj¿¡ µé¾îÀÖ´Â ³»¿ëÀ» ÀÎµ¦½º¸¶´Ù Á¤·ÄÇÏ±â À§ÇØ¼­ for¹®¾È¿¡¼­ ±¸ÇöÇÑ´Ù.
+		sort(adj[i].begin(), adj[i].end());	//ê°’ì´ ì°¨ë¡€ëŒ€ë¡œ ì…ë ¥ë˜ì§€ ì•Šê±°ë‚˜ ë°©ë¬¸ìˆœì„œê°€ ê¼¬ì´ëŠ” ê²ƒì„ ë°©ì§€í•˜ê¸°ìœ„í•´ ì •ë ¬í•œë‹¤.
+	}																				//adjì— ë“¤ì–´ìˆëŠ” ë‚´ìš©ì„ ì¸ë±ìŠ¤ë§ˆë‹¤ ì •ë ¬í•˜ê¸° ìœ„í•´ì„œ forë¬¸ì•ˆì—ì„œ êµ¬í˜„í•œë‹¤.
 	DFS(V);
 	printf("\n");
-	memset(visited, 0, sizeof(visited));								//BFSµé¾î°¡±â Àü¿¡ visited¹è¿­ ÃÊ±âÈ­
+	memset(visited, 0, sizeof(visited));	//BFSë“¤ì–´ê°€ê¸° ì „ì— visitedë°°ì—´ ì´ˆê¸°í™”
 	BFS(V);
 	printf("\n");
 	return 0;
