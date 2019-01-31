@@ -1,3 +1,4 @@
+/*코드 암기해서 써먹자*/
 #include <iostream>
 #include <cstring>
 using namespace std;
