@@ -1,36 +1,41 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
 #include <cstring>
 using namespace std;
-vector<vector<int>> cn(1005);
-int N, M, u, v, check[1005], cnt;
+queue<int>q;
+vector<vector<int>> r(105);
+int n, m, a, b, check[105],target1,target2, cnt;
 
-void DFS(int now) {
-	if (check[now] != 0) return;
-	check[now] = 1;	
-	for (int i = 0; i < cn[now].size(); i++) {
-		int next = cn[now][i];
-		if (check[next] == 0) DFS(next);
-		
+void DFS(int mem1,int mem2) {
+	check[mem1] = 1;	
+	for (int i = 0; i < r[mem1].size(); i++) {
+		int mem2 = r[mem1][i];
+		if (check[mem2] == 0) {
+			cnt++;
+			DFS(mem2,mem1);
+		}
+		if (r[mem1][i] != mem2) {
+			printf("-1\n");
+			return;
+		}
 	}
-	
 }
 
 int main() {
-	scanf("%d%d", &N, &M);
-	for (int i = 0; i < M; i++) {
-		scanf("%d%d", &u, &v);
-		cn[u].push_back(v);
-		cn[v].push_back(u);
+	scanf("%d", &n);
+	scanf("%d%d", &target1, &target2);
+	scanf("%d", &m);
+	for (int i = 0; i < m; i++) {
+		scanf("%d%d", &a, &b);
+		r[a].push_back(b);
+		r[b].push_back(a);
 	}
-	for (int i = 0; i < N; i++) {
-		sort(cn[i].begin(), cn[i].end());
+	for (int i = 0; i < n; i++) {
+		sort(r[i].begin(), r[i].end());
 	}
-	for (int i = 1; i <= N; i++) {
-		if (check[i] == 0) cnt++;
-		DFS(i);
-	}
+	DFS(target1,target2);
 	printf("%d\n", cnt);
 	return 0;
 }
