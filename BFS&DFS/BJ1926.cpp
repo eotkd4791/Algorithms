@@ -1,9 +1,16 @@
-/*BOJ 1926 �׸�
-BFS�� �̿��� Flood fill����
-queue���� pop�� �� ������ sum�� ���ϰ� MAX���� �����ߴ�.
-queue�ʱ�ȭ�� �Ű��µ� ��ǻ� while����
-Ż���Ϸ��� queue�� ����־�� �ϴϱ�...
-�� field���� 0�� �κ��� ���� �ʱ� ���ؼ� ������ ���� �߰��ߴ�.*/
+/*BOJ 1926 그림
+BFS를 이용한 Flood fill문제
+queue에서 pop이 될 때마다 sum을 더하고 MAX값을 갱신했다.
+queue초기화에 신경썼는데 사실상 while문을
+탈출하려면 queue가 비어있어야 하니까...
+또 field에서 0인 부분을 들어가지 않기 위해서 조건을 따로 추가했다.*/
+/*BOJ 1926 그림
+BFS를 이용한 Flood fill문제
+queue에서 pop이 될 때마다 sum을 더하고 MAX값을 갱신했다.
+queue초기화에 신경썼는데 사실상 while문을
+탈출하려면 queue가 비어있어야 하니까...
+또 field에서 0인 부분을 들어가지 않기 위해서 조건을 따로 추가했다.*/
+
 #include <iostream>
 #include <algorithm>
 #include <queue>
