@@ -10,7 +10,7 @@ vector<vector<int>>v(110);
 int N,arr[110][110],check[110];
 
 int BFS(int start, int target) {
-    queue<int>q={};                     //큐 초기화 까먹지 않기 
+    queue<int>q={};                     //큐 초기화 까먹지 않기.
     check[start]=1;
     q.push(start);
     while(q.empty()==0) {
