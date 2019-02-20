@@ -1,3 +1,6 @@
+/*정수 삼각형
+합이 최대가 되는 경로에 있는 수의 합을 출력한다.
+밑으로 내려가서 합이 최대가 되는 경로에 새로운 값을 더해주는 식으로 풀어나간다.*/
 #include <iostream>
 #include <algorithm>
 using namespace std;
