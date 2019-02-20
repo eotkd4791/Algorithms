@@ -1,4 +1,7 @@
-/*방향키 코드*/
+/*적록색약-방향키 코드(flood fill)을 이용하여 풀었다. 
+색깔이 같은 영역끼리만 이동해야하기 때문에 
+조건에 " field[rx][cy] == field[x][y] "을
+추가하여 풀었다.*/
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -18,7 +21,7 @@ void DFS(int x, int y) {
 		if (rx >= 0 && cy >= 0 && rx < N && cy < N && field[rx][cy] == field[x][y] && check[rx][cy] == 0) {
 			DFS(rx, cy);
 		}
-	}
+	} 
 }
 
 int main() {
