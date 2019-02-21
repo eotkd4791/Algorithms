@@ -3,14 +3,12 @@ Algorithms
 
 
 
-BOJ,SW Academy solutions
--------------------------
-
-& Tips
--------
-
+BOJ,SW Academy solutions & Tips
+-------------------------------
+* * *
+* * *
 
 
+Link:https://www.acmicpc.net/
 
-<https://www.acmicpc.net/>
-<https://www.swexpertacademy.com/>
+Link:https://www.swexpertacademy.com/
