@@ -1,9 +1,9 @@
 Algorithms
-=========
+==========
 
 BOJ,SW Academy solutions & Tips
 -------------------------------
 
-Link:https://www.acmicpc.net/
+BAEKJOON Online Judge☞  <https://www.acmicpc.net/>
 
-Link:https://www.swexpertacademy.com/
+SW expert academy    ☞  <https://www.swexpertacademy.com/>
