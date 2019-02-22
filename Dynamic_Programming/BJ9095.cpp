@@ -21,9 +21,9 @@ int count(int x) {
 
 int main() {
 	int T = 0;
-	int n[10]= {};												//입력받은 값
+	int n[10]= {};					//입력받은 값
 	
-	scanf_s("%d", &T);											//테스트 케이스 갯수
+	scanf_s("%d", &T);				//테스트 케이스 갯수
 
 	for (int i = 0; i < T; i++) {
 		scanf_s("%d", &n[i]);
