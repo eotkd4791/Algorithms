@@ -29,4 +29,4 @@ int main(void) {
 	printf("%d\n", N + 1);
 
 	return 0;
-}
+} 
