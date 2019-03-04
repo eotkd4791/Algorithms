@@ -1,3 +1,5 @@
+/*배열초기화를 빼먹어서 푸는 시간이 지연됬다. 기본적인 실수 줄이기..
+너비와 높이를 바꿔썼기 때문에 답이 안나왔다. 기본적인 부분 신경쓰기.*/
 #include <iostream>
 #include <utility>
 #include <cstring>
