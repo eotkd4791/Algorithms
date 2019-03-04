@@ -4,8 +4,8 @@
 using namespace std;
 
 int main() {
-	int arr1[9] = {}; // ÀÔ·Â¹Ş´Â ¹è¿­
-	int arr2[7] = {}; // ÀÏ°ö ³­ÀïÀÌ¸¸ ³Ö´Â ¹è¿­
+	int arr1[9] = {}; // ì…ë ¥ë°›ëŠ” ë°°ì—´
+	int arr2[7] = {}; // ì¼ê³± ë‚œìŸì´ë§Œ ë„£ëŠ” ë°°ì—´
 	int x, y = 0;
 	int sum = 0;
 	int rest = 0;
@@ -35,4 +35,4 @@ int main() {
 		printf("%d\n", arr2[i]);
 	}
 	return 0;
-}
+} 
