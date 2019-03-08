@@ -29,7 +29,7 @@ void BFS(int x, int y, int z) {
 	mark[0][0][0] = 1;
 	q.push({ x,y });
 	c.push(z);
-	while (!q.empty() || !c.empty()) {
+	while (!q.empty()) {
 		int ox = q.front().first;
 		int oy = q.front().second;
 		int cntbrk = c.front();
