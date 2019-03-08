@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cstring>
 #include <queue>
+#define INF 99999
 using namespace std;
 
 int N, M, ground[1005][1005], growth[1005][1005];
