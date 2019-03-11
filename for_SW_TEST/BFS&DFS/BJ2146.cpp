@@ -1,7 +1,7 @@
-//BOJ2126 [´Ù¸®¸¸µé±â]
-/*board¹è¿­Àº °£Ã´»ç¾÷À» ÇÏ¸é¼­ »õ·Ó°Ô È®ÀåÇÏ´Â ºÎºÐÀ» Ãâ¹ßÁ¡ÀÌ µÈ ¼¶ÀÇ ¹øÈ£¸¦ ºÙ¿©¼­ ÀúÀåÇÑ´Ù.
-check¹è¿­Àº ¼¶ ¹øÈ£ ¸Å±æ¶§´Â memoization¿ëµµ·Î ¾²Áö¸¸,
-memsetÇÔ¼ö·Î ÃÊ±âÈ­¸¦ ÇÑ ÀÌÈÄ¿¡´Â °£Ã´»ç¾÷ÀÇ È½¼ö¸¦ Ç¥½ÃÇÏ´Â ¿ëµµ·Î ¾´´Ù.*/
+//BOJ2126 [ë‹¤ë¦¬ë§Œë“¤ê¸°]
+/*boardë°°ì—´ì€ ê°„ì²™ì‚¬ì—…ì„ í•˜ë©´ì„œ ìƒˆë¡­ê²Œ í™•ìž¥í•˜ëŠ” ë¶€ë¶„ì„ ì¶œë°œì ì´ ëœ ì„¬ì˜ ë²ˆí˜¸ë¥¼ ë¶™ì—¬ì„œ ì €ìž¥í•œë‹¤.
+checkë°°ì—´ì€ ì„¬ ë²ˆí˜¸ ë§¤ê¸¸ë•ŒëŠ” memoizationìš©ë„ë¡œ ì“°ì§€ë§Œ,
+memsetí•¨ìˆ˜ë¡œ ì´ˆê¸°í™”ë¥¼ í•œ ì´í›„ì—ëŠ” ê°„ì²™ì‚¬ì—…ì˜ íšŸìˆ˜ë¥¼ í‘œì‹œí•˜ëŠ” ìš©ë„ë¡œ ì“´ë‹¤.*/
 #include <iostream>
 #include <cstring>
 #include <algorithm>
@@ -35,17 +35,17 @@ void numbering_BFS(int x, int y) {
 	}
 }
 
-void BFSforFill() {//°£Ã´»ç¾÷ / ÀÌ¹Ì Å¥¿¡ ´Ù µé¾î°¡ÀÖ±â ¶§¹®¿¡ ÀÎÀÚ°ª ÇÊ¿ä¾øÀ½
-	int level = 0; //°£Ã´»ç¾÷ È½¼ö
-	int round = check[Q.front().first][Q.front().second]; // ÇÏÀ§±×·ìÀ¸·Î °¡¸é¼­ ++
-	//check Å¥¿¡ µé¾î°£ °ªÀÇ ÀÎµ¦½º(ÀÚ¸®¹øÈ£) //·¹º§À» ±¸ºÐÇÏ±â À§ÇØ¼­
+void BFSforFill() {//ê°„ì²™ì‚¬ì—… / ì´ë¯¸ íì— ë‹¤ ë“¤ì–´ê°€ìžˆê¸° ë•Œë¬¸ì— ì¸ìžê°’ í•„ìš”ì—†ìŒ
+	int level = 0; //ê°„ì²™ì‚¬ì—… íšŸìˆ˜
+	int round = check[Q.front().first][Q.front().second]; // í•˜ìœ„ê·¸ë£¹ìœ¼ë¡œ ê°€ë©´ì„œ ++
+	//check íì— ë“¤ì–´ê°„ ê°’ì˜ ì¸ë±ìŠ¤(ìžë¦¬ë²ˆí˜¸) //ë ˆë²¨ì„ êµ¬ë¶„í•˜ê¸° ìœ„í•´ì„œ
 	while (!Q.empty()) {
 		int xnowfill = Q.front().first;
 		int ynowfill = Q.front().second;
 
 		if (check[xnowfill][ynowfill] > round) {
-			level++; //°£Ã´»ç¾÷ ´ÙÀ½ ¶ó¿îµå·Î ³Ñ¾î°¡±â
-			round++; //´ÙÀ½ ÇÏÀ§ ±×·ì 
+			level++; //ê°„ì²™ì‚¬ì—… ë‹¤ìŒ ë¼ìš´ë“œë¡œ ë„˜ì–´ê°€ê¸°
+			round++; //ë‹¤ìŒ í•˜ìœ„ ê·¸ë£¹ 
 		}
 
 		Q.pop();
@@ -58,15 +58,15 @@ void BFSforFill() {//°£Ã´»ç¾÷ / ÀÌ¹Ì Å¥¿¡ ´Ù µé¾î°¡ÀÖ±â ¶§¹®¿¡ ÀÎÀÚ°ª ÇÊ¿ä¾øÀ½
 					ans = check[xnowfill][ynowfill] + check[xnextfill][ynextfill];
 					MIN = min(MIN, ans);
 				}
-			}//ÃÖ¼Ú°ª ±¸ÇÏ±â
+			}//ìµœì†Ÿê°’ êµ¬í•˜ê¸°
 
 			if (xnextfill >= 0 && ynextfill >= 0 && xnextfill < N && ynextfill < N) {
 				if (check[xnextfill][ynextfill] == 0 && sub[xnextfill][ynextfill] == 0) {
-					check[xnextfill][ynextfill] = level + 1;//ÀÌ¹ø ¶ó¿îµå °£Ã´³¡³Â´Ù´Â ¶æ.
+					check[xnextfill][ynextfill] = level + 1;//ì´ë²ˆ ë¼ìš´ë“œ ê°„ì²™ëëƒˆë‹¤ëŠ” ëœ».
 					sub[xnextfill][ynextfill] = sub[xnowfill][ynowfill];
 					Q.push({ xnextfill, ynextfill });
 				}
-			}//¶ó¿îµå ÁøÇà
+			}//ë¼ìš´ë“œ ì§„í–‰
 		}
 	}
 }
@@ -77,7 +77,7 @@ int main() {
 		for (int j = 0; j < N; j++) {
 			scanf("%d", &field[i][j]);
 		}
-	}//ÀÔ·Â
+	}//ìž…ë ¥
 
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < N; j++) {
@@ -86,24 +86,24 @@ int main() {
 				num++;
 			}
 		}
-	}//¼¶ ¹øÈ£¿¡ ¹øÈ£ ¸Å±â±â
+	}//ì„¬ ë²ˆí˜¸ì— ë²ˆí˜¸ ë§¤ê¸°ê¸°
 	memset(check, 0, sizeof(check));
 
-	for (int i = 0; i < N; i++) {//3Áßfor¹® Å½»öÇÏ¸é¼­ ´ÜÁöÀÇ Å×µÎ¸® ºÎºÐµéÀ» Å¥¿¡ Ã³À½ ¹Ú´Â ÄÚµå
+	for (int i = 0; i < N; i++) {//3ì¤‘forë¬¸ íƒìƒ‰í•˜ë©´ì„œ ë‹¨ì§€ì˜ í…Œë‘ë¦¬ ë¶€ë¶„ë“¤ì„ íì— ì²˜ìŒ ë°•ëŠ” ì½”ë“œ
 		for (int j = 0; j < N; j++) {
 			for (int n = 0; n < 4; n++) {
 				int xnext = i + dx[n];
 				int ynext = j + dy[n];
-				if (sub[i][j] != 0 && sub[xnext][ynext] == 0) {//¹Ù´Ù°¡ ¿·¿¡ ÀÖ´ÂÁö È®ÀÎ ÈÄ
-					Q.push({ i, j });//¹Ù´Ù¿Í ÀÎÁ¢ÇÑ Å×µÎ¸®ÀÇ ÁÂÇ¥¸¦ Å¥¿¡ ¸ðµÎ ³Ö°í ½ÃÀÛ.
-					break;//µÎ°³ÀÇ ¹Ù´Ù¿Í ÀÎÁ¢ÇÑ ÁöÁ¡À» Áßº¹À¸·Î Å¥¿¡ ³ÖÁö¾Ê±â À§ÇØ¼­
-						  //ÇÑ¹ø Å¥¿¡ ³ÖÀ¸¸é ¹Ýº¹¹®À» ºüÁ®³ª°¡¾ß ÇÏ±â ¶§¹®¿¡ break¸¦ ÀÌ¿ëÇÏ¿© for¹®ÇÏ³ª¸¦ ¹þ¾î³µ´Ù°¡ ´Ù½Ã µé¾î¿È.
+				if (sub[i][j] != 0 && sub[xnext][ynext] == 0) {//ë°”ë‹¤ê°€ ì˜†ì— ìžˆëŠ”ì§€ í™•ì¸ í›„
+					Q.push({ i, j });//ë°”ë‹¤ì™€ ì¸ì ‘í•œ í…Œë‘ë¦¬ì˜ ì¢Œí‘œë¥¼ íì— ëª¨ë‘ ë„£ê³  ì‹œìž‘.
+					break;//ë‘ê°œì˜ ë°”ë‹¤ì™€ ì¸ì ‘í•œ ì§€ì ì„ ì¤‘ë³µìœ¼ë¡œ íì— ë„£ì§€ì•Šê¸° ìœ„í•´ì„œ
+						  //í•œë²ˆ íì— ë„£ìœ¼ë©´ ë°˜ë³µë¬¸ì„ ë¹ ì ¸ë‚˜ê°€ì•¼ í•˜ê¸° ë•Œë¬¸ì— breakë¥¼ ì´ìš©í•˜ì—¬ forë¬¸í•˜ë‚˜ë¥¼ ë²—ì–´ë‚¬ë‹¤ê°€ ë‹¤ì‹œ ë“¤ì–´ì˜´.
 				}
 			}
 		}
-	}//Å¥¿¡ °¢ ¼¶µéÀ» ÇÑ¹ø¿¡ Áý¾î³Ö´Â ÀÌÀ¯ - µ¿½Ã¿¡ °£Ã´À» ÇØ¾ß Á¤È®ÇÑ °Å¸®¸¦ Àê ¼ö ÀÖÀ½.
+	}//íì— ê° ì„¬ë“¤ì„ í•œë²ˆì— ì§‘ì–´ë„£ëŠ” ì´ìœ  - ë™ì‹œì— ê°„ì²™ì„ í•´ì•¼ ì •í™•í•œ ê±°ë¦¬ë¥¼ ìž´ ìˆ˜ ìžˆìŒ.
 
 	BFSforFill();
 	printf("%d\n", MIN);
 	return 0;
-}
+} 
