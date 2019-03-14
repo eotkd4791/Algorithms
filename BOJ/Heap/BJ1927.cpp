@@ -1,3 +1,8 @@
+/*
+=========================
+   BOJ1927 ìµœì†Œí™
+=========================
+*/
 #include <iostream>
 #include <functional>
 #include <queue>
@@ -6,7 +11,7 @@ using namespace std;
 
 int N;
 priority_queue<int, vector<int>, greater<int>> q;
-//ÃÖ¼ÒÈü = greater, ÃÖ´ëÈü = less
+//MIN = greater, MAX = less #include <functional>
 
 int main() {
 	scanf("%d", &N);
