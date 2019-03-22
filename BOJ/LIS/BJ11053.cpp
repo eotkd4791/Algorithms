@@ -1,6 +1,6 @@
-/*LIS(Longest Increasing Subsequence)ÃÖÀåÁõ°¡ºÎºĞ¼ö¿­ÀÇ
-ÀüÇüÀûÀÌ°í °¡Àå ½¬¿î À¯ÇüÀÌÁö¸¸ NÀÌ 1ÀÏ¶§ÀÇ Á¶°ÇÀ» ¸øÀâ¾Æ¼­
-°è¼Ó Æ²·È´Ù. ÀÌ Á¶°Ç ÅëÂ°·Î °øºÎÇØ¾ß°Ú´Ù.*/
+/*LIS(Longest Increasing Subsequence)ìµœì¥ì¦ê°€ë¶€ë¶„ìˆ˜ì—´ì˜
+ì „í˜•ì ì´ê³  ê°€ì¥ ì‰¬ìš´ ìœ í˜•ì´ì§€ë§Œ Nì´ 1ì¼ë•Œì˜ ì¡°ê±´ì„ ëª»ì¡ì•„ì„œ
+ê³„ì† í‹€ë ¸ë‹¤. ì´ ì¡°ê±´ í†µì§¸ë¡œ ê³µë¶€í•´ì•¼ê² ë‹¤.*/
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -30,4 +30,4 @@ int main() {
 	}
 	printf("%d\n", MAX);
 	return 0;
-}
+} 
