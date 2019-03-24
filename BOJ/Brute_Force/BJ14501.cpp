@@ -1,3 +1,10 @@
+/*
+============================
+      BOJ14501 퇴사
+============================
+SW기출 
+*/
+
 #include <iostream>
 #include <algorithm>
 using namespace std;
