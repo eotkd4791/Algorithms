@@ -1,3 +1,9 @@
+/*
+============================
+    BOJ14499 주사위굴리기
+============================
+*/
+
 #include <iostream>
 using namespace std;
 int N, M, x, y, l;
