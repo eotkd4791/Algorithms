@@ -20,7 +20,6 @@ void recur(int *arr, int cnt) {
 int main() {
 	scanf("%d%d", &N, &M);
 	int arr[10] = {};
-	bool check[10] = {};
 	recur(arr, 0);
 	return 0;
 }
