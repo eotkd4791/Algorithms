@@ -1,12 +1,12 @@
 //////////////////////////////////
 /*
-		BOJ11559 Puyo puyo
+	BOJ11559 Puyo puyo
                                */
 //////////////////////////////////
 /*
-queue¸¦ ÇÏ³ª ´õ ¸¸µé¾î¼­ Áö³ª°¡´Â ³ëµå¸¦
-pushÇØ³õ°í size()ÇÔ¼ö¸¦ ÀÌ¿ëÇØ¼­ 
-°¹¼ö¸¦ ¼¼´Â ¹æ½ÄÀ¸·Î Ç®¾ú´Ù.
+queueë¥¼ í•˜ë‚˜ ë” ë§Œë“¤ì–´ì„œ ì§€ë‚˜ê°€ëŠ” ë…¸ë“œë¥¼
+pushí•´ë†“ê³  size()í•¨ìˆ˜ë¥¼ ì´ìš©í•´ì„œ 
+ê°¯ìˆ˜ë¥¼ ì„¸ëŠ” ë°©ì‹ìœ¼ë¡œ í’€ì—ˆë‹¤.
 */
 
 #include <iostream>
@@ -28,10 +28,10 @@ typedef struct {
 	char colour;
 }node;
 
-queue<node> q;//»ö±òÅ½»ö Å¥
-queue<node> ep;//Áö³ª°£ ³ëµå(»Ñ¿ä)¸¦ ÀúÀåÇÏ´Â Å¥
+queue<node> q;//ìƒ‰ê¹”íƒìƒ‰ í
+queue<node> ep;//ì§€ë‚˜ê°„ ë…¸ë“œ(ë¿Œìš”)ë¥¼ ì €ì¥í•˜ëŠ” í
 
-bool OOB(int x, int y) {//¹üÀ§ °Ë»ç
+bool OOB(int x, int y) {//ë²”ìœ„ ê²€ì‚¬
 	if (H > x && x >= 0 && 0 <= y && y < W)
 		return true;
 	return false;
@@ -45,7 +45,7 @@ void BFS(node p) {
 		int oy = q.front().y;
 		char oc = q.front().colour;
 
-		ep.push({ ox,oy,oc });//Å¥»çÀÌÁî Ã¼Å©ÇÏ´Â ½ÄÀ¸·Î ¸î¹øÀÇ »Ñ¿ä°¡ ºÙ¾îÀÖ´ÂÁö È®ÀÎ.
+		ep.push({ ox,oy,oc });//íì‚¬ì´ì¦ˆ ì²´í¬í•˜ëŠ” ì‹ìœ¼ë¡œ ëª‡ë²ˆì˜ ë¿Œìš”ê°€ ë¶™ì–´ìˆëŠ”ì§€ í™•ì¸.
 		check[ox][oy] = 1;
 
 		q.pop();
@@ -64,7 +64,7 @@ void BFS(node p) {
 }
 
 
-void puyodrop() {//»Ñ¿ä Á¤·Ä
+void puyodrop() {//ë¿Œìš” ì •ë ¬
 	for (int j = 0; j < W; j++) {
 		for (int i = 11; i >= 1; i--) {
 			for (int k = i - 1; k >= 0; k--) {
@@ -89,8 +89,8 @@ int main() {
 		}
 	}
 	
-	int chain = 0;//¿¬¼â È½¼ö
-	int checkbomb = 1;//Æø¹ß È½¼ö
+	int chain = 0;//ì—°ì‡„ íšŸìˆ˜
+	int checkbomb = 1;//í­ë°œ íšŸìˆ˜
 
 	while (checkbomb != 0) {
 		checkbomb = 0;
@@ -102,11 +102,11 @@ int main() {
 						node point = { i, j, field[i][j] };
 						BFS(point);
 
-						if (ep.size() < 4) {//4µ¢¾î¸®º¸´Ù ÀûÀ¸¸é Å¥¸¦ pop½ÃÄÑ¼­ ºñ¿î´Ù.
+						if (ep.size() < 4) {//4ë©ì–´ë¦¬ë³´ë‹¤ ì ìœ¼ë©´ íë¥¼ popì‹œì¼œì„œ ë¹„ìš´ë‹¤.
 							while (!ep.empty()) ep.pop();
 						}
 
-						else {//4µ¢¾î¸®º¸´Ù ¸¹°Å³ª °°À¸¸é '.'À¸·Î ¹Ù²ãÁÜ
+						else {//4ë©ì–´ë¦¬ë³´ë‹¤ ë§ê±°ë‚˜ ê°™ìœ¼ë©´ '.'ìœ¼ë¡œ ë°”ê¿”ì¤Œ
 							checkbomb++;
 							while (!ep.empty()) {
 								int xo = ep.front().x;
