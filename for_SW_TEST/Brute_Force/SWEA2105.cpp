@@ -1,16 +1,16 @@
 //////////////////////////////////
 /*
-		SWEA2105 µðÀúÆ® Ä«Æä
-								*/
+	SWEA2105 ë””ì €íŠ¸ ì¹´íŽ˜
+				*/
 //////////////////////////////////
 
 /*
-°°Àº ¹æ½ÄÀ¸·Î BFS·Î Ç®¾úÀ¸³ª
-check¹è¿­À» ¾îµð¼­ ÃÊ±âÈ­ÇÒÁö ¸ô¶ó¼­
-Àç±Í¸¦ ÀÌ¿ëÇÑ DFS¹æ½ÄÀ¸·Î Ç®¾ú´Ù.
+ê°™ì€ ë°©ì‹ìœ¼ë¡œ BFSë¡œ í’€ì—ˆìœ¼ë‚˜
+checkë°°ì—´ì„ ì–´ë””ì„œ ì´ˆê¸°í™”í• ì§€ ëª°ë¼ì„œ
+ìž¬ê·€ë¥¼ ì´ìš©í•œ DFSë°©ì‹ìœ¼ë¡œ í’€ì—ˆë‹¤.
 ios::sync_with_stdio(0);
 cin.tie(0);
-ÀÌ ÄÚµå¸¦ ¾È ¾²´Ï ´äÀÌ Æ²¸®°Ô ³ª¿Ô´Ù.
+ì´ ì½”ë“œë¥¼ ì•ˆ ì“°ë‹ˆ ë‹µì´ í‹€ë¦¬ê²Œ ë‚˜ì™”ë‹¤.
 */
 
 #include <iostream>
@@ -20,13 +20,13 @@ using namespace std;
 int T, N;
 int field[22][22];
 //bool checkp[22][22];
-bool checkd[101]; //Áö³ª¿Â µðÀúÆ® Ä«Æä¹øÈ£ Ç¥½Ã
-int dx[4] = { 1,1,-1,-1 };//¿ìÇÏ, ÁÂÇÏ, ÁÂ»ó, ¿ì»ó
+bool checkd[101]; //ì§€ë‚˜ì˜¨ ë””ì €íŠ¸ ì¹´íŽ˜ë²ˆí˜¸ í‘œì‹œ
+int dx[4] = { 1,1,-1,-1 };//ìš°í•˜, ì¢Œí•˜, ì¢Œìƒ, ìš°ìƒ
 int dy[4] = { 1,-1,-1,1 };
 
-//dir[0](1,1)¿ìÇÏ [1](1,-1)ÁÂÇÏ  [2](-1,-1)ÁÂ»ó [3](-1,1)¿ì»ó ½Ã°è¹æÇâÀ¸·Î ¼¼ÆÃÇØ³ùÀ½.
-//¹Ý½Ã°è³ª ½Ã°è³ª ¶È°°À½
-//¿ìÇÏ0 -> ¿ìÇÏ0,ÁÂÇÏ1    ÁÂÇÏ1->ÁÂÇÏ1,ÁÂ»ó2  ÁÂ»ó2->ÁÂ»ó2,¿ì»ó3   ¿ì»ó3->¿ì»ó3,¿ìÇÏ0
+//dir[0](1,1)ìš°í•˜ [1](1,-1)ì¢Œí•˜  [2](-1,-1)ì¢Œìƒ [3](-1,1)ìš°ìƒ ì‹œê³„ë°©í–¥ìœ¼ë¡œ ì„¸íŒ…í•´ë†¨ìŒ.
+//ë°˜ì‹œê³„ë‚˜ ì‹œê³„ë‚˜ ë˜‘ê°™ìŒ
+//ìš°í•˜0 -> ìš°í•˜0,ì¢Œí•˜1    ì¢Œí•˜1->ì¢Œí•˜1,ì¢Œìƒ2  ì¢Œìƒ2->ì¢Œìƒ2,ìš°ìƒ3   ìš°ìƒ3->ìš°ìƒ3,ìš°í•˜0
 int sx, sy;
 int dir;
 int MAX;
@@ -43,13 +43,13 @@ void DFS(int x, int y, int dir, int cnt) {
 		return;
 	}
 	for (int n = 0; n < 2; n++) {
-		int nx = x + dx[dir + n];//nÀÌ 0ÀÏ¶§´Â ¿ø·¡ ÀÖ´ø ¹æÇâ, 1ÀÏ¶§´Â ½Ã°è¹æÇâÀ¸·Î ÇÑ¹ø µ¹¸°°Å.
+		int nx = x + dx[dir + n];//nì´ 0ì¼ë•ŒëŠ” ì›ëž˜ ìžˆë˜ ë°©í–¥, 1ì¼ë•ŒëŠ” ì‹œê³„ë°©í–¥ìœ¼ë¡œ í•œë²ˆ ëŒë¦°ê±°.
 		int ny = y + dy[dir + n];
 		if (OOB(nx, ny) && !checkd[field[nx][ny]]) {
 			checkd[field[nx][ny]] = 1;
 			DFS(nx, ny, dir + n, cnt + 1);
 			checkd[field[nx][ny]] = 0;
-		}//Àç±Í¸¦ ÀÌ¿ëÇÏ°í ´Ù½Ã µ¹¾Æ¿Ã¶§ check°ªµéÀ» ÃÊ±âÈ­ÇØÁØ´Ù.
+		}//ìž¬ê·€ë¥¼ ì´ìš©í•˜ê³  ë‹¤ì‹œ ëŒì•„ì˜¬ë•Œ checkê°’ë“¤ì„ ì´ˆê¸°í™”í•´ì¤€ë‹¤.
 		else if (nx == sx && ny == sy) DFS(nx, ny, dir + n, cnt + 1);
 	}
 }
