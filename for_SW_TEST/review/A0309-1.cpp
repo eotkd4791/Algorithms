@@ -31,46 +31,46 @@ int busmoving() {
 		int ty = t.front().second;
 		h.pop();
 		t.pop();
-		if (hx == N - 1 && hy == N - 1) {//Çìµå°¡ ¸ñÀûÁö¿¡ À§Ä¡ÇØ ÀÖ°í, ²¿¸®°¡ ´ë°¢¼± ¹æÇâÀ¸·Î ÀÖÁö ¾ÊÀ» ‹š cnt++
+		if (hx == N - 1 && hy == N - 1) {//í—¤ë“œê°€ ëª©ì ì§€ì— ìœ„ì¹˜í•´ ìžˆê³ , ê¼¬ë¦¬ê°€ ëŒ€ê°ì„  ë°©í–¥ìœ¼ë¡œ ìžˆì§€ ì•Šì„ ë•Œ cnt++
 			if (tx == N - 2 && ty == N - 1) cnt++;
 			if (tx == N - 1 && ty == N - 2) cnt++;
 		}
-		if (hx == tx && hy == ty + 1) { //Áö±Ý¹æÇâ ¿À¸¥
+		if (hx == tx && hy == ty + 1) { //ì§€ê¸ˆë°©í–¥ ì˜¤ë¥¸
 			if (field[hx][hy + 1] == 0 && hy + 1 < N) {
 				h.push({ hx,hy + 1 });
 				t.push({ tx,ty + 1 });
-				//´ÙÀ½¹æÇâ ¿À¸¥
+				//ë‹¤ìŒë°©í–¥ ì˜¤ë¥¸
 			}
 			if (field[hx + 1][hy + 1] == 0 && field[hx][hy + 1] == 0 && field[hx + 1][hy] == 0 && hx + 1 < N && hy + 1 < N) {
 				h.push({ hx + 1,hy + 1 });
 				t.push({ tx ,ty + 1 });
-				//´ÙÀ½¹æÇâ ´ë°¢
+				//ë‹¤ìŒë°©í–¥ ëŒ€ê°
 			}
 		}
-		if (hx == tx + 1 && hy == ty + 1) {//Áö±Ý¹æÇâ ´ë°¢
+		if (hx == tx + 1 && hy == ty + 1) {//ì§€ê¸ˆë°©í–¥ ëŒ€ê°
 			if (field[hx][hy + 1] == 0 && hy + 1 < N) {
 				h.push({ hx,hy + 1 });
 				t.push({ tx+1,ty + 1 });
-			}//´ÙÀ½¹æÇâ ¿À¸¥
+			}//ë‹¤ìŒë°©í–¥ ì˜¤ë¥¸
 			if (field[hx + 1][hy + 1] == 0 && field[hx][hy + 1] == 0 && field[hx + 1][hy] == 0 && hx + 1 < N && hy + 1 < N) {
 				h.push({ hx + 1,hy + 1 });
 				t.push({ tx + 1,ty + 1 });
-			}//´ÙÀ½¹æÇâ ´ë°¢
+			}//ë‹¤ìŒë°©í–¥ ëŒ€ê°
 			if (field[hx + 1][hy] == 0 && hx + 1 < N) {
 				h.push({ hx + 1,hy });
 				t.push({ tx + 1,ty + 1 });
-			}//´ÙÀ½¹æÇâ ¾Æ·¡
+			}//ë‹¤ìŒë°©í–¥ ì•„ëž˜
 		}
-		if (hx == tx + 1 && hy == ty) {//Áö±Ý¹æÇâ ¾Æ·¡
+		if (hx == tx + 1 && hy == ty) {//ì§€ê¸ˆë°©í–¥ ì•„ëž˜
 			if (field[hx + 1][hy] == 0 && hx + 1 < N) {
 				h.push({ hx + 1,hy });
 				t.push({ tx + 1,ty });
-				//´ÙÀ½¹æÇâ ¾Æ·¡
+				//ë‹¤ìŒë°©í–¥ ì•„ëž˜
 			}
 			if (field[hx + 1][hy + 1] == 0 && field[hx][hy + 1] == 0 && field[hx + 1][hy] == 0 && hx + 1 < N && hy + 1 < N) {
 				h.push({ hx + 1,hy + 1 });
 				t.push({ tx + 1,ty });
-				//´ÙÀ½¹æÇâ ´ë°¢
+				//ë‹¤ìŒë°©í–¥ ëŒ€ê°
 			}
 		}
 	}
