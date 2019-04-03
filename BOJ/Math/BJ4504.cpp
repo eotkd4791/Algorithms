@@ -1,3 +1,8 @@
+////////////////////////
+/*
+   BOJ4504 ë°°ìˆ˜ ì°¾ê¸°
+                     *//
+////////////////////////
 #include <iostream>
 
 using namespace std;
@@ -7,7 +12,7 @@ int main() {
 	int mtp[1001] = { 1 };
 
 
-	scanf("%d", &n);					//ÀÔ·Â ¹Þ´Â ¼ö n
+	scanf("%d", &n);					
 
 
 	for (int i = 0; i < 1001; i++) {
