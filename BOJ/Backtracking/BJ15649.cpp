@@ -28,4 +28,4 @@ int main(void) {
 	bool isused[n] = {};
 	int arr[m] = {};
 	func(arr, isused, 0);
-}
+} 
