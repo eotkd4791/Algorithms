@@ -27,5 +27,5 @@ int main() {
 		len = max(len, dp[i]);
 	}
 	printf("%d\n", N - len);
-	return 0;
+	return 0; 
 } 
