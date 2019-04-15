@@ -27,3 +27,4 @@ int main() {
 		for (int i = 1; i <= N; i++) printf("%d ", check[i]);
 		return 0;
 	} 
+ 
