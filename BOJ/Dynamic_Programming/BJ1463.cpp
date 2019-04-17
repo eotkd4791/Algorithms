@@ -32,5 +32,5 @@ int main() {
 	int N = 0;
 	scanf("%d", &N);
 	printf("%d\n", opt(N));
-	return 0;
+	return 0; 
 }
