@@ -41,7 +41,8 @@ int main() {
             printf("%d ",BFS(i,j));
             memset(check,0,sizeof(check));
         }
-        printf("\n");
+        printf("\n"); 
     }
     return 0;
 }
+  
