@@ -32,7 +32,7 @@ int main() {
 			if (same[i] == MAX) target = score[i];
 		}
 		printf("#%d %d\n", i,target);
-		for (int i = 0; i < 1000; i++) {//��� �� �ʱ�ȭ
+		for (int i = 0; i < 1000; i++) {//¸ðµç °ª ÃÊ±âÈ­
 			score[i] = 0;
 			same[i] = 0;
 		}
@@ -40,4 +40,4 @@ int main() {
 		MAX = 0;
 	}
 	return 0;
-}
+} 
