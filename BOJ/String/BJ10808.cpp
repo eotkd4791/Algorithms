@@ -15,4 +15,4 @@ int main() {
 		printf("%d ",alp[i]);
 	}
 	return 0;
-}
+} 
