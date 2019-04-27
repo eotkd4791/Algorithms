@@ -1,6 +1,6 @@
-/*���� Ÿ�ϰ� ���� Ÿ���� ���踦 �ľ��ϰ� ������ ����� ���ѷ����� ���ȴ�.
-ó���� R+B�� ����� ���ϴٰ� �ȵǼ� R�� ����θ� �����ؼ� Ǯ�ԵǾ���.
-printf�� ������ �ٲٸ� Ʋ�ȴٰ� �����µ� �� �׷����� �𸣰ڴ�.*/
+/*갈색 타일과 빨간 타일의 관계를 파악하고 조건을 만들어 무한루프를 돌렸다.
+처음에 R+B의 약수를 구하다가 안되서 R의 약수로만 생각해서 풀게되었다.
+printf의 순서를 바꾸면 틀렸다고 나오는데 왜 그러는지 모르겠다.*/
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -21,5 +21,5 @@ int main() {
 		}
 		l++;
 	}
-	return 0;
+	return 0; 
 }
