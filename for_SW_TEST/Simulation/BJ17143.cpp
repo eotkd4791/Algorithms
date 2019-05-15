@@ -1,6 +1,6 @@
 //////////////////////////////////////
 /*
-		   BOJ17143 ³¬½Ã¿Õ
+         BOJ17143 ë‚šì‹œì™•
 
 //////////////////////////////////////
 */
@@ -18,34 +18,34 @@ int dy[] = { 0,0,0,1,-1 };
 typedef struct {
 	int X;//x
 	int Y;//y
-	int Sp;//¼Óµµ 
-	int D;//¹æÇâ 
-	int Sz;//Å©±â 
-	int num;//»ó¾î ¹øÈ£ 
-	bool alive;//»ì¾Ò´ÂÁö Á×¾ú´ÂÁö 
+	int Sp;//ì†ë„ 
+	int D;//ë°©í–¥ 
+	int Sz;//í¬ê¸° 
+	int num;//ìƒì–´ ë²ˆí˜¸ 
+	bool alive;//ì‚´ì•˜ëŠ”ì§€ ì£½ì—ˆëŠ”ì§€ 
 }shark;
-vector<shark> v;//»ó¾îÀÇ Á¤º¸¸¦ ÀúÀåÇÑ´Ù. 
-vector<int> map[MAX][MAX];//»ó¾î ¹øÈ£¸¦ ÀúÀåÇÑ´Ù. 
+vector<shark> v;//ìƒì–´ì˜ ì •ë³´ë¥¼ ì €ì¥í•œë‹¤. 
+vector<int> map[MAX][MAX];//ìƒì–´ ë²ˆí˜¸ë¥¼ ì €ì¥í•œë‹¤. 
 
-bool compare(int a, int b) {//Å©±â°¡ Å« »ó¾î¸¦ ¾ÕÀ¸·Î ¿À°Ô Á¤·Ä 
+bool compare(int a, int b) {//í¬ê¸°ê°€ í° ìƒì–´ë¥¼ ì•ìœ¼ë¡œ ì˜¤ê²Œ ì •ë ¬ 
 	if (v[a].Sz > v[b].Sz)
 		return true;
 	return false;
 }
-bool check() {//¸Ê¿¡ »ó¾î°¡ ¾ø´Ù¸é false ¹İÈ¯(¹İº¹¹® Å»Ãâ Á¶°Ç) 
+bool check() {//ë§µì— ìƒì–´ê°€ ì—†ë‹¤ë©´ false ë°˜í™˜(ë°˜ë³µë¬¸ íƒˆì¶œ ì¡°ê±´) 
 	for (int i = 0; i < v.size(); i++) {
         if (v[i].alive == true) return true;
     }
     return false;
 }
 
-void fishing(int yy) {//³¬½Ã²ÛÀÌ »ó¾î¸¦ Àâ°í Å©±â¸¦ sum¿¡ ´õÇÑ´Ù. 
+void fishing(int yy) {//ë‚šì‹œê¾¼ì´ ìƒì–´ë¥¼ ì¡ê³  í¬ê¸°ë¥¼ sumì— ë”í•œë‹¤. 
 	for(int xx=0; xx<R; xx++) {
 		if(map[xx][yy].size()==1) {
 			sum += v[map[xx][yy][0]].Sz;
-			v[map[xx][yy][0]].alive=false;//»ó¾î¸¦ Á×ÀÌ°í 
-			map[xx][yy].clear();//ÁÂÇ¥ ÃÊ±âÈ­¸¦ ÇØÁØ´Ù. 
-			break;//¹İº¹¹® Å»Ãâ  ÇÑ¸¶¸®¸¸ ÀâÀ¸´Ï±ñ 
+			v[map[xx][yy][0]].alive=false;//ìƒì–´ë¥¼ ì£½ì´ê³  
+			map[xx][yy].clear();//ì¢Œí‘œ ì´ˆê¸°í™”ë¥¼ í•´ì¤€ë‹¤. 
+			break;//ë°˜ë³µë¬¸ íƒˆì¶œ  í•œë§ˆë¦¬ë§Œ ì¡ìœ¼ë‹ˆê¹ 
 		}
 	}
 }
@@ -55,16 +55,16 @@ void movingshark() {
 		if (!v[i].alive) continue;
 		int ox = v[i].X;
 		int oy = v[i].Y;
-		map[ox][oy].clear();//»ó¾î¸¦ ¸Ê¿¡¼­ ´Ù Áö¿ì°í 
+		map[ox][oy].clear();//ìƒì–´ë¥¼ ë§µì—ì„œ ë‹¤ ì§€ìš°ê³  
 	}
-	for (int i = 0; i < v.size(); i++) {//»ìÀÌÀÖ´Â »ó¾îÀÇ ÁÂÇ¥¸¦ °¡Á®¿Í¼­  
+	for (int i = 0; i < v.size(); i++) {//ì‚´ì´ìˆëŠ” ìƒì–´ì˜ ì¢Œí‘œë¥¼ ê°€ì ¸ì™€ì„œ  
 		if (!v[i].alive) continue;
 		int xx = v[i].X;
 		int yy = v[i].Y;
 		int dd = v[i].D;
 		int ss = v[i].Sp;
 
-		if (dd == 1 || dd == 2) {//¹æÇâ »ó ÇÏ 
+		if (dd == 1 || dd == 2) {//ë°©í–¥ ìƒ í•˜ 
 			for (int j = 0; j < ss; j++) {
 				int nx = xx + dx[dd];
 				int ny = yy + dy[dd];
@@ -80,7 +80,7 @@ void movingshark() {
 				yy = ny;
 			}
 		}
-		else if (dd == 3 || dd == 4) {//¹æÇâ ÁÂ ¿ì	 
+		else if (dd == 3 || dd == 4) {//ë°©í–¥ ì¢Œ ìš°	 
 			for (int j = 0; j < ss; j++) {
 				int nx = xx + dx[dd];
 				int ny = yy + dy[dd];
@@ -103,11 +103,11 @@ void movingshark() {
 	}
 }
 
-void killshark() {//ÇÑ ÁÂÇ¥¿¡ »ó¾î°¡ ¿©·¯¸¶¸®¶ó¸é Å©±â°¡ °¡Àå Å« »ó¾î°¡ ³ª¸ÓÁö »ó¾î¸¦ ´Ù ¸Ô¾î¹ö¸°´Ù. 
+void killshark() {//í•œ ì¢Œí‘œì— ìƒì–´ê°€ ì—¬ëŸ¬ë§ˆë¦¬ë¼ë©´ í¬ê¸°ê°€ ê°€ì¥ í° ìƒì–´ê°€ ë‚˜ë¨¸ì§€ ìƒì–´ë¥¼ ë‹¤ ë¨¹ì–´ë²„ë¦°ë‹¤. 
 	for (int i = 0; i < R; i++) {
 		for (int j = 0; j < C; j++) {
 			if (map[i][j].size() > 1) {
-				sort(map[i][j].begin(), map[i][j].end(), compare);//Å©±â°¡ °¡Àå Å« »ó¾î°¡ MAP[X][Y][0]¿¡ À§Ä¡ÇÏµµ·Ï Á¤·Ä 
+				sort(map[i][j].begin(), map[i][j].end(), compare);//í¬ê¸°ê°€ ê°€ì¥ í° ìƒì–´ê°€ MAP[X][Y][0]ì— ìœ„ì¹˜í•˜ë„ë¡ ì •ë ¬ 
 				int ll = map[i][j][0];//
 				for (int k = 1; k < map[i][j].size(); k++) {
 					v[map[i][j][k]].alive = false;
@@ -128,12 +128,12 @@ int main() {
 	
 	cin >> R >> C >> M;
 
-	if (M == 0) {//»ó¾î ¼ö°¡ 0¸¶¸® ÀÏ¶§ 0Ãâ·Â ÈÄ Á¾·á
+	if (M == 0) {//ìƒì–´ ìˆ˜ê°€ 0ë§ˆë¦¬ ì¼ë•Œ 0ì¶œë ¥ í›„ ì¢…ë£Œ
 		cout << '0';
 		return 0;
 	}
 	int r, c, s, d, z;
-	for (int m = 0; m < M; m++) {//ÀÔ·Â
+	for (int m = 0; m < M; m++) {//ì…ë ¥
 		shark aa;
 		cin >> r >> c >> s >> d >> z;
 		r -= 1;
@@ -148,7 +148,7 @@ int main() {
 		v.push_back(aa);
 		map[r][c].push_back(m);
 	}
-	for (int i = 0; i < C; i++) {//³¬½Ã²Û ¿­->ÀÌµ¿
+	for (int i = 0; i < C; i++) {//ë‚šì‹œê¾¼ ì—´->ì´ë™
 		if(!check()) break;
 		fishing(i);
 		movingshark();

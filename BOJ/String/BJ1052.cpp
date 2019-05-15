@@ -1,8 +1,8 @@
-/*���ڿ� �ǵڿ��� NULL���ڰ� �´ٴ� ���� �������.
-�Ǿ��� ��ĭ�̸� 0���� �����ؼ� ��ĭ�� �� cnt�� �÷ȴ�.
-�Ǿ��� ���ڸ� 1�� �����ؼ� cnt �� �÷Ȱ�, 
-�ǵڰ� ��ĭ�̸� ������ cnt�� �ϳ� ���ҽ��״�.
-str[str_len-1]���� NULL���ڰ� ���ԵǾ��ִ�.*/
+/*문자열 맨뒤에는 NULL문자가 온다는 것을 기억하자.
+맨앞이 빈칸이면 0으로 시작해서 빈칸의 수 cnt를 올렸다.
+맨앞이 문자면 1로 시작해서 cnt 를 올렸고, 
+맨뒤가 빈칸이면 끝에서 cnt를 하나 감소시켰다.
+str[str_len-1]에는 NULL문자가 포함되어있다.*/
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -19,4 +19,4 @@ int main() {
 	if (str[str_len - 2] == ' ') cnt--;
 	printf("%d", cnt);
 	return 0;
-}
+} 
