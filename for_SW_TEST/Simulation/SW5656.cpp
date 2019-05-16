@@ -100,4 +100,4 @@ int main() {
 		cout << '#' << t << ' ' << MIN << '\n';
 	}
 	return 0;
-}
+} 
