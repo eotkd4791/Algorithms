@@ -36,14 +36,14 @@ int main() {
 			}
 			for (int n = 0; n < 4; n++) {
 				if (dir[n] == 0) continue;
-				if (dir[n] == 1) {//½Ã°è 
+				if (dir[n] == 1) {//ì‹œê³„ 
 					int tmp = arr[n][7];
-					for (int m = 7; m >=1; m--) { //µµ´Â ¹æÇâ°ú ¹İ´ë·Î for¹®À» µ¹·Á¾ß °ªÀ» º¸Á¸ÇÒ ¼ö ÀÖ´Ù.
+					for (int m = 7; m >=1; m--) { //ë„ëŠ” ë°©í–¥ê³¼ ë°˜ëŒ€ë¡œ forë¬¸ì„ ëŒë ¤ì•¼ ê°’ì„ ë³´ì¡´í•  ìˆ˜ ìˆë‹¤.
 						arr[n][m] = arr[n][m-1];
 					}
 					arr[n][0] = tmp;
 				}
-				if (dir[n] == -1) {//¹İ½Ã°è
+				if (dir[n] == -1) {//ë°˜ì‹œê³„
 					int tmp = arr[n][0];
 					for (int m = 0; m <7; m++) {
 						arr[n][m] = arr[n][m+1];
@@ -61,5 +61,5 @@ int main() {
 		}
 		printf("#%d %d\n", t, result);
 	}
-	return 0;
+	return 0; 
 }
