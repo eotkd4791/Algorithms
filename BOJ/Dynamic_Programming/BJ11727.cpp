@@ -22,3 +22,4 @@ int main() {
 	printf("%d\n", tile_cnt(N)%10007);
 	return 0;
 }
+ 
