@@ -29,3 +29,5 @@ int main(void) {
 	int arr[m] = {};
 	func(arr, isused, 0);
 } 
+ 
+ 

@@ -32,3 +32,4 @@ int main() {
 	recur(1, 0);
 	return 0;
 }
+  

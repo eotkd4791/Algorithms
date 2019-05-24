@@ -33,4 +33,4 @@ int main() {
 	bool check[10] = {};
 	recur(arr,check, 0);
 	return 0;
-}
+}  
