@@ -1,8 +1,7 @@
 ## Algorithms
-==========
 
 ### BOJ,SW Academy solutions & Tips
-
+---
 
 > BAEKJOON Online Judge☞  <https://www.acmicpc.net/> HD:eotkd4791
 
