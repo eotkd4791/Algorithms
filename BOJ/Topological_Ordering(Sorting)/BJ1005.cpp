@@ -71,9 +71,9 @@ int main() {
 
 		for (int i = 1; i <= n; i++) {
 			int iz = inv[tpl[i]].size();
-			if (inv[tpl[i]].size() == 0) {
+			if (iz == 0) 
 				dp[tpl[i]] = d[tpl[i]];
-			}
+			
 			else {
 				dp[tpl[i]] = d[tpl[i]];
 				for (int j = 0; j < iz; j++) {
