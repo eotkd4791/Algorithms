@@ -1,13 +1,13 @@
-Algorithms
+## Algorithms
 ==========
 
-BOJ,SW Academy solutions & Tips
--------------------------------
+### BOJ,SW Academy solutions & Tips
 
-BAEKJOON Online Judge☞  <https://www.acmicpc.net/> HD:eotkd4791
 
-SW expert academy    ☞  <https://www.swexpertacademy.com/> HD:홀랄리롤랄리 
+> BAEKJOON Online Judge☞  <https://www.acmicpc.net/> HD:eotkd4791
 
-Programmers    ☞  <https://www.programmers.co.kr/> HD:STEF
+> SW Expert Academy    ☞  <https://www.swexpertacademy.com/> HD:홀랄리롤랄리 
 
-Codeforce    ☞  <https://codeforces.com/> HD:eotkd4791
+> Programmers    ☞  <https://www.programmers.co.kr/> HD:STEF
+
+> Codeforce    ☞  <https://codeforces.com/> HD:eotkd4791
