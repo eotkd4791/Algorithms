@@ -1,9 +1,8 @@
 //////////////////////////////
 /*
-    BOJ1005 ACM Craft
-			    */
+      BOJ1005 ACM Craft
+*/
 //////////////////////////////
-
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -12,7 +11,7 @@
 using namespace std;
 
 vector<vector<int> > v;
-vector<vector<int> > inv;
+vector<vector<int> > r;
 queue<int> q;
 int d[100001];
 int dp[1001];
@@ -51,43 +50,45 @@ int main() {
 		cin >> n >> k;
 
 		v.resize(n + 1);
-		inv.resize(n + 1);
+		r.resize(n + 1);
 		for (int i = 1; i <= n; i++) 
 			cin >> d[i];
 		
-
 		int a, b;
 		for (int i = 0; i < k; i++) {
 			cin >> a >> b;
 			v[a].push_back(b);
-			inv[b].push_back(a);
+			r[b].push_back(a);
 			ind[b]++;
 		}
 		cin >> w;
+
 		for (int i = 1; i <= n; i++)
 			if (ind[i] == 0)
 				q.push(i);
 		BFS();
 
 		for (int i = 1; i <= n; i++) {
-			int iz = inv[tpl[i]].size();
+			int iz = r[tpl[i]].size();
 			if (iz == 0) 
 				dp[tpl[i]] = d[tpl[i]];
 			
 			else {
 				dp[tpl[i]] = d[tpl[i]];
 				for (int j = 0; j < iz; j++) {
-					dp[tpl[i]] = max(dp[tpl[i]], dp[inv[tpl[i]][j]] + d[tpl[i]]);
+					int tmp = r[tpl[i]][j];
+					dp[tpl[i]] = max(dp[tpl[i]], dp[tmp] + d[tpl[i]]);
 				}
 			}
 		}
 		cout << dp[w] << '\n';
 
 		v.clear();
-		inv.clear();
+		r.clear();
 		memset(dp, 0, sizeof(dp));
 		memset(tpl, 0, sizeof(tpl));
 		memset(check, 0, sizeof(check));
 	}
 	return 0;
 }
+
