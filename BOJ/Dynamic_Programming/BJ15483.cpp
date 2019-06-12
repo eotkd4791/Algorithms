@@ -1,6 +1,6 @@
 ////////////////////////////////////
 /*
-       BOJ15483 ÃÖ¼Ò ÆíÁý
+       BOJ15483 ìµœì†Œ íŽ¸ì§‘
 */
 ////////////////////////////////////
 #include <iostream>
@@ -27,8 +27,6 @@ int main() {
 	n = strlen(str1);
 	m = strlen(str2);
 
-	memset(dp, -1, sizeof(dp));
-
 	dp[0][0] = 0;
 	for (int i = 1; i <= n; i++)
 		dp[i][0] = i;
@@ -37,8 +35,7 @@ int main() {
 	
 	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= m; j++)
-			if (dp[i][j] == -1)
-				dp[i][j] = min(dp[i - 1][j - 1] + issame(i, j), min(dp[i - 1][j] + 1, dp[i][j - 1] + 1));
+			dp[i][j] = min(dp[i - 1][j - 1] + issame(i, j), min(dp[i - 1][j] + 1, dp[i][j - 1] + 1));
 	
 	printf("%d", dp[n][m]);
 	return 0;
