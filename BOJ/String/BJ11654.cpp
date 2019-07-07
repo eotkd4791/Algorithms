@@ -5,4 +5,4 @@ int main() {
 	scanf("%c", &ascii);
 	printf("%d", ascii);
 	return 0;
-}
+} 
