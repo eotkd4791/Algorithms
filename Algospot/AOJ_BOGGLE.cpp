@@ -4,14 +4,12 @@ using namespace std;
 
 int c, n;
 char que[5][5];
-int arr[30];
-char ans[5][5];
 int dx[8] = { 0,0,1,-1,1,1,-1,-1 };
 int dy[8] = { 1,-1,0,0,1,-1,1,-1 };
 int dp[5][5][11];
 bool esc;
 
-void DFS(int x, int y, string *st, int idx,int ch) {//¹®ÀÚ¿­, ¸î¹øÂ° ¹®ÀÚ¿­, ¸î¹øÂ° ¹®ÀÚ
+void DFS(int x, int y, string *st, int idx,int ch) {//ë¬¸ìì—´, ëª‡ë²ˆì§¸ ë¬¸ìì—´, ëª‡ë²ˆì§¸ ë¬¸ì
 	dp[x][y][ch] = 1;
 	if (ch == st[idx].size()) {
 		esc = 1;
@@ -38,7 +36,6 @@ int main() {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				cin >> que[i][j];
-				arr[que[i][j] - 'A']++;
 			}
 		}
 
@@ -49,7 +46,6 @@ int main() {
 		
 		for (int i = 0; i < n; i++) {
 			memset(dp, 0, sizeof(dp));
-			
 			for (int a = 0; a < 5; a++) {
 				for (int b = 0; b < 5; b++) {
 					if (st[i][0] == que[a][b]) {
