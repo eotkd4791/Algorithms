@@ -10,7 +10,7 @@ using namespace std;
 int n, m;
 int check[55][55];
 int field[55][55];
-int	area[55][55];
+int area[55][55];
 int dx[] = { 0,-1,0,1 };
 int dy[] = { -1,0,1,0 };
 int croom;
