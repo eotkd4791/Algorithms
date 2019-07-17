@@ -48,4 +48,4 @@ int main() {
 		cout << MaxSubArr(0, n - 1) << '\n';
 	}
 	return 0;
-}
+} 
