@@ -1,13 +1,10 @@
 #include <iostream>
 #include <queue>
-#include <climits>
-#include <algorithm>
 using namespace std;
 
 int M, N;
 int field[111][111];
 bool check[111][111][5];
-int MIN = INT_MAX;
 int stx, sty, sd, dtx, dty, dd;
 int dx[] = { 0,0,0,1,-1 };
 int dy[] = { 0,1,-1,0,0 };
@@ -51,27 +48,27 @@ int bfs(int xx, int yy, int fd) {
 		q.pop();
 
 		if (ox == dtx && oy == dty && od == dd)
-			return min(MIN, os);
+			return os;
 
 		else {
-			if (MIN > os + 1) {
-				for (int k = 1; k <= 3; k++) {
-					int nx = ox + dx[od] * k;
-					int ny = oy + dy[od] * k;
-					if (field[nx][ny] == 1 || check[nx][ny][od])
-						break;
+			
+            for (int k = 1; k <= 3; k++) {
+                int nx = ox + dx[od] * k;
+                int ny = oy + dy[od] * k;
+                if (field[nx][ny] == 1 || check[nx][ny][od])
+                    break;
 
-					if (!check[nx][ny][od] && field[nx][ny] == 0 && 1 <= nx && nx <= M && N >= ny && ny >= 1) {
-						q.push({ nx,ny,od,os + 1 });
-					}
-				}
-				int ld = left(od);
-				int rd = right(od);
-				if (!check[ox][oy][ld]) 
-					q.push({ ox,oy,ld,os + 1 });
-				if (!check[ox][oy][rd]) 
-					q.push({ ox,oy,rd,os + 1 });
-			}
+                if (!check[nx][ny][od] && field[nx][ny] == 0 && 1 <= nx && nx <= M && N >= ny && ny >= 1) {
+                    q.push({ nx,ny,od,os + 1 });
+                }
+            }
+            int ld = left(od);
+            int rd = right(od);
+            if (!check[ox][oy][ld]) 
+                q.push({ ox,oy,ld,os + 1 });
+            if (!check[ox][oy][rd]) 
+                q.push({ ox,oy,rd,os + 1 });
+
 		}
 	}
 }
