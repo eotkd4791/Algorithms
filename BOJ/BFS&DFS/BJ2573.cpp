@@ -43,6 +43,7 @@ int main() {
 	cin.tie(0);
 
 	cin >> n >> m;
+	pair<int, int> st;
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < m; j++)
 			cin >> field[i][j];
@@ -61,13 +62,11 @@ int main() {
 		}
 		if (land == 0) {
 			cnt = 0;
-			cout << cnt;
 			break;
 		}
-		if (land > 1) {
-			cout << cnt;
+		if (land > 1) 
 			break;
-		}
+		
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				field[i][j] -= melt[i][j];
@@ -76,5 +75,6 @@ int main() {
 		}
 		cnt++;
 	}
+	cout << cnt;
 	return 0;
 }
