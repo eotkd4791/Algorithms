@@ -43,7 +43,6 @@ int main() {
 	cin.tie(0);
 
 	cin >> n >> m;
-	pair<int, int> st;
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < m; j++)
 			cin >> field[i][j];
