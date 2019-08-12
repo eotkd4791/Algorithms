@@ -17,11 +17,11 @@ int main() {
 	cin.tie(0); cout.tie(0);
 
 	cin >> N >> M >> K;
-	for (int i = 1; i <= N; i++) {
-		for (int j = 1; j <= M; j++) {
+	for (int i = 1; i <= N; i++) 
+		for (int j = 1; j <= M; j++) 
 			cin >> field[i][j];
-		}
-	}
+		
+	
 
 	int R, C, S;
 	for (int i = 0; i < K; i++) {
@@ -41,26 +41,25 @@ int main() {
 
 			for (int s = 1; s <= os; s++) {
 				int tmp = field[ox - s][oy - s];
-				for (int i = ox - s + 1; i<=ox + s; i++) {
+				for (int i = ox - s + 1; i<=ox + s; i++) 
 					field[i - 1][oy - s] = field[i][oy - s];
-				}
-				for (int j = oy - s + 1; j <= oy + s; j++) {
+				
+				for (int j = oy - s + 1; j <= oy + s; j++) 
 					field[ox + s][j - 1] = field[ox + s][j];
-				}
-				for (int i = ox + s - 1; i >= ox - s; i--) {
+				
+				for (int i = ox + s - 1; i >= ox - s; i--) 
 					field[i + 1][oy + s] = field[i][oy + s];
-				}
-				for (int j = oy + s - 1; j > oy - s; j--) {
+				
+				for (int j = oy + s - 1; j > oy - s; j--) 
 					field[ox - s][j + 1] = field[ox - s][j];
-				}
+				
 				field[ox - s][oy - s + 1] = tmp;
 			}
 		}
 		for (int i = 1; i <= N; i++) {
 			int sum = 0;
-			for (int j = 1; j <= M; j++) {
+			for (int j = 1; j <= M; j++) 
 				sum += field[i][j];
-			}
 			MIN = min(MIN, sum);
 		}
 	} while (next_permutation(idx, idx + K));
