@@ -70,4 +70,4 @@ int main() {
 	tr->cur = tr->root;
 	postorder(tr->cur);
 	return 0;
-}
+} 
