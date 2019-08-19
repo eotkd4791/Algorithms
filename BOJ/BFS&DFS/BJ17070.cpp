@@ -20,38 +20,38 @@ void BFS() {
 		t.pop();
 		if (hx == N && hy == N) cnt++;
 		
-		if (hx == tx + 1 && hy == ty) {//ÇöÀ§Ä¡ ¾Æ·¡¹æÇâ
-			if (hx + 1 <= N && field[hx + 1][hy] == 0) {//¾Æ·¡ÁøÇà
+		if (hx == tx + 1 && hy == ty) {//í˜„ìœ„ì¹˜ ì•„ëž˜ë°©í–¥
+			if (hx + 1 <= N && field[hx + 1][hy] == 0) {//ì•„ëž˜ì§„í–‰
 				h.push({ hx + 1,hy });
 				t.push({ tx + 1,ty });
 			}
-			if (hx + 1 <= N && hy + 1 <= N && field[hx + 1][hy + 1] == 0 && field[hx + 1][hy] == 0 && field[hx][hy + 1] == 0) {//´ë°¢ ÁøÇà
+			if (hx + 1 <= N && hy + 1 <= N && field[hx + 1][hy + 1] == 0 && field[hx + 1][hy] == 0 && field[hx][hy + 1] == 0) {//ëŒ€ê° ì§„í–‰
 				h.push({ hx + 1,hy + 1 });
 				t.push({ tx + 1,ty });
 			}
 		}
 
-		if (hx == tx + 1 && hy == ty + 1) {//Çö ´ë°¢
-			if (hx + 1 <= N && hy + 1 <= N && field[hx + 1][hy + 1] == 0 && field[hx + 1][hy] == 0 && field[hx][hy + 1] == 0) {//´ë°¢ÁøÇà
+		if (hx == tx + 1 && hy == ty + 1) {//í˜„ ëŒ€ê°
+			if (hx + 1 <= N && hy + 1 <= N && field[hx + 1][hy + 1] == 0 && field[hx + 1][hy] == 0 && field[hx][hy + 1] == 0) {//ëŒ€ê°ì§„í–‰
 				h.push({ hx + 1,hy + 1 });
 				t.push({ tx + 1,ty + 1 });
 			}
-			if (hx + 1 <= N && field[hx + 1][hy] == 0) {//¾Æ·¡ÁøÇà
+			if (hx + 1 <= N && field[hx + 1][hy] == 0) {//ì•„ëž˜ì§„í–‰
 				h.push({ hx + 1,hy });
 				t.push({ tx + 1,ty + 1 });
 			}
-			if (hy + 1 <= N && field[hx][hy + 1] == 0) {//¿À¸¥ÁøÇà
+			if (hy + 1 <= N && field[hx][hy + 1] == 0) {//ì˜¤ë¥¸ì§„í–‰
 				h.push({ hx,hy + 1 });
 				t.push({ tx + 1,ty + 1 });
 			}
 		}
 
-		if (hx == tx && hy == ty + 1) {//Çö ¿À¸¥
-			if (hy + 1 <= N && field[hx][hy + 1] == 0) {//¿À¸¥ÁøÇà
+		if (hx == tx && hy == ty + 1) {//í˜„ ì˜¤ë¥¸
+			if (hy + 1 <= N && field[hx][hy + 1] == 0) {//ì˜¤ë¥¸ì§„í–‰
 				h.push({ hx,hy + 1 });
 				t.push({ tx,ty + 1 });
 			}
-			if (hx + 1 <= N && hy + 1 <= N && field[hx + 1][hy + 1] == 0 && field[hx + 1][hy] == 0 && field[hx][hy + 1] == 0) {//´ë°¢ÁøÇà
+			if (hx + 1 <= N && hy + 1 <= N && field[hx + 1][hy + 1] == 0 && field[hx + 1][hy] == 0 && field[hx][hy + 1] == 0) {//ëŒ€ê°ì§„í–‰
 				h.push({ hx + 1,hy + 1 });
 				t.push({ tx,ty + 1 });
 			}
@@ -70,4 +70,4 @@ int main() {
 	BFS();
 	printf("%d", cnt);
 	return 0;
-}
+} 
