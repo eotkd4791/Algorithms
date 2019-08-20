@@ -1,15 +1,15 @@
 /*
 ============================================
-               BOJ7569 Åä¸¶Åä2
+               BOJ7569 í† ë§ˆí† 2
 ============================================
 
 ++++++++++++++++++++++++++++++++++++++++++++
-3Â÷¿ø ¹è¿­À» ¸¸µé¾î¼­ ÇØ°áÇß°í, Å¥ ¼±¾ð ½Ã
-Æä¾î¸¦ ÇÏ³ª ºü¶ß·Á¼­ ½Ç¼öÇß´Ù.
-±×¸®°í BFS¸¦ µ¹°í³ª¼­ growth¿¡ 0ÀÌ ÀÖÀ¸¸é
--1À» ¹ÝÈ¯ÇÏ¶ó°í Çß´Âµ¥ ground¿Í growth°¡
-¸ðµÎ 0ÀÏ ¶§ -1À» ¹ÝÈ¯ÇØ¾ß ÇÏ´Â Á¶°ÇÀ» Æ²·È´Ù.
-Â÷±ÙÂ÷±Ù Àß »ý°¢ÇØ¼­ ½Ç¼ö¸¦ ÁÙ¿©¾ß°Ú´Ù.
+3ì°¨ì› ë°°ì—´ì„ ë§Œë“¤ì–´ì„œ í•´ê²°í–ˆê³ , í ì„ ì–¸ ì‹œ
+íŽ˜ì–´ë¥¼ í•˜ë‚˜ ë¹ ëœ¨ë ¤ì„œ ì‹¤ìˆ˜í–ˆë‹¤.
+ê·¸ë¦¬ê³  BFSë¥¼ ëŒê³ ë‚˜ì„œ growthì— 0ì´ ìžˆìœ¼ë©´
+-1ì„ ë°˜í™˜í•˜ë¼ê³  í–ˆëŠ”ë° groundì™€ growthê°€
+ëª¨ë‘ 0ì¼ ë•Œ -1ì„ ë°˜í™˜í•´ì•¼ í•˜ëŠ” ì¡°ê±´ì„ í‹€ë ¸ë‹¤.
+ì°¨ê·¼ì°¨ê·¼ ìž˜ ìƒê°í•´ì„œ ì‹¤ìˆ˜ë¥¼ ì¤„ì—¬ì•¼ê² ë‹¤.
 ++++++++++++++++++++++++++++++++++++++++++++
 */
 #include <iostream>
@@ -18,13 +18,13 @@
 using namespace std;
 
 int M, N, H;
-int box[101][101][101]; //ÀÔ·Â¹Þ´Â ¹è¿­
-int growth[101][101][101];//Åä¸¶Åä ÁÂÇ¥¸¶´Ù ³¯Â¥·Î ³ªÅ¸³»´Â ¹è¿­
+int box[101][101][101]; //ìž…ë ¥ë°›ëŠ” ë°°ì—´
+int growth[101][101][101];//í† ë§ˆí†  ì¢Œí‘œë§ˆë‹¤ ë‚ ì§œë¡œ ë‚˜íƒ€ë‚´ëŠ” ë°°ì—´
 queue<pair<pair<int, int>,int >> q;
 int dx[6] = { 0,0,0,0,-1,1 };
 int dy[6] = { -1,1,0,0,0,0 };
-int dz[6] = { 0,0,-1,1,0,0 };//¿Þ ¿À À§ ¾Æ ¾Õ µÚ ¼ø
-int day;//Åä¸¶Åä ÀÍ´Â ³¯Â¥, Å¥¿¡ ÇÑ¹ø¿¡ Çª½¬ÇÏ´Â ±×·ìÀ» ³Ñ¹ö¸µ(BFSÀÇ ±íÀÌ)
+int dz[6] = { 0,0,-1,1,0,0 };//ì™¼ ì˜¤ ìœ„ ì•„ ì•ž ë’¤ ìˆœ
+int day;//í† ë§ˆí†  ìµëŠ” ë‚ ì§œ, íì— í•œë²ˆì— í‘¸ì‰¬í•˜ëŠ” ê·¸ë£¹ì„ ë„˜ë²„ë§(BFSì˜ ê¹Šì´)
 
 void BFS() {
 	int lev = growth[q.front().first.first][q.front().first.second][q.front().second];
@@ -61,7 +61,7 @@ int main() {
 			for (int m = 0; m < M; m++) {
 				scanf("%d", &box[n][m][h]);
 				if (box[n][m][h] == 1) {
-					q.push(make_pair(make_pair(n, m), h));//´Ù¸®¸¸µé±âÃ³·³ breakÇÒ ÇÊ¿ä°¡ ¾ø´Ù.
+					q.push(make_pair(make_pair(n, m), h));//ë‹¤ë¦¬ë§Œë“¤ê¸°ì²˜ëŸ¼ breakí•  í•„ìš”ê°€ ì—†ë‹¤.
 				}
 			}
 		}
@@ -73,10 +73,10 @@ int main() {
 			for (int m = 0; m < M; m++) {
 				if (growth[n][m][h] == 0 && box[n][m][h]==0) {
 					day = -1;
-				}//0 Áï, BFSÀÌÈÄ¿¡ ¾È ÀÍÀº Åä¸¶Åä°¡ ÀÖÀ¸¸é -1 Ãâ·ÂÇÏ°í ÇÁ·Î±×·¥ Á¾·á
+				}//0 ì¦‰, BFSì´í›„ì— ì•ˆ ìµì€ í† ë§ˆí† ê°€ ìžˆìœ¼ë©´ -1 ì¶œë ¥í•˜ê³  í”„ë¡œê·¸ëž¨ ì¢…ë£Œ
 			}
 		}
 	}
 	printf("%d\n", day);
 	return 0;
-}
+} 
