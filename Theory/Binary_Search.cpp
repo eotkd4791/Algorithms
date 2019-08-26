@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-int Binary_Search(int arr[], int length, int target) { //¹è¿­ ÀÌ¸§, ±æÀÌ, Ã£°íÀÚ ÇÏ´Â °ª
-	int first = 0;				//Å½»ö ½ÃÀÛ ÀÎµ¦½º °ª
-	int last = length - 1;	//Å½»ö ¸¶Áö¸· ÀÎµ¦½º °ª
-	int mid;						//Å½»öÀÇ ±âÁØ°ª, ÇÑ¹ø Å½»öÈÄ¿¡ ¹üÀ§ Àç¼³Á¤À» À§ÇÑ º¯¼ö
+int Binary_Search(int arr[], int length, int target) { //ë°°ì—´ ì´ë¦„, ê¸¸ì´, ì°¾ê³ ì í•˜ëŠ” ê°’
+	int first = 0;				//íƒìƒ‰ ì‹œì‘ ì¸ë±ìŠ¤ ê°’
+	int last = length - 1;	//íƒìƒ‰ ë§ˆì§€ë§‰ ì¸ë±ìŠ¤ ê°’
+	int mid;						//íƒìƒ‰ì˜ ê¸°ì¤€ê°’, í•œë²ˆ íƒìƒ‰í›„ì— ë²”ìœ„ ì¬ì„¤ì •ì„ ìœ„í•œ ë³€ìˆ˜
 
 	while (first <= last) {
 		mid = (first + last) / 2;
@@ -14,18 +14,18 @@ int Binary_Search(int arr[], int length, int target) { //¹è¿­ ÀÌ¸§, ±æÀÌ, Ã£°íÀÚ
 			else first = mid + 1;
 		}
 	}
-	return -1;					 //Å½»ö½ÇÆĞ-Ã£´Â °ªÀÌ ¹üÀ§ ³»¿¡ ¾øÀ» ¶§ -1¹İÈ¯
+	return -1;					 //íƒìƒ‰ì‹¤íŒ¨-ì°¾ëŠ” ê°’ì´ ë²”ìœ„ ë‚´ì— ì—†ì„ ë•Œ -1ë°˜í™˜
 }
 int main() {
 	int arr[] = { 1,3,5,7,9 };
 	int idx=0;
 	printf("%d ", arr[]);
 	idx = Binary_Search(arr, sizeof(arr) / sizeof(int), n);
-	if (idx == -1) printf("Ã£´Â °ªÀÌ ¹üÀ§ ³»¿¡ ¾ø½À´Ï´Ù.\n");
-	else printf("Å¸°ÙÀÌ ÀúÀåµÇ¾î ÀÖ´Â ÀÎµ¦½º´Â %d ÀÔ´Ï´Ù.\n", idx);
+	if (idx == -1) printf("ì°¾ëŠ” ê°’ì´ ë²”ìœ„ ë‚´ì— ì—†ìŠµë‹ˆë‹¤.\n");
+	else printf("íƒ€ê²Ÿì´ ì €ì¥ë˜ì–´ ìˆëŠ” ì¸ë±ìŠ¤ëŠ” %d ì…ë‹ˆë‹¤.\n", idx);
 	
 	idx = Binary_Search(arr, sizeof(arr)/sizeof(int), 4);
-	if (idx == -1) printf("Ã£´Â °ªÀÌ ¹üÀ§ ³»¿¡ ¾ø½À´Ï´Ù.\n");
-	else printf("Å¸°ÙÀÌ ÀúÀåµÇ¾î ÀÖ´Â ÀÎµ¦½º´Â %d ÀÔ´Ï´Ù.\n", idx);
+	if (idx == -1) printf("ì°¾ëŠ” ê°’ì´ ë²”ìœ„ ë‚´ì— ì—†ìŠµë‹ˆë‹¤.\n");
+	else printf("íƒ€ê²Ÿì´ ì €ì¥ë˜ì–´ ìˆëŠ” ì¸ë±ìŠ¤ëŠ” %d ì…ë‹ˆë‹¤.\n", idx);
 	return 0;
-}//ÀÌÁøÅ½»öÀº ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÀÌ µÇ¾îÀÖ´Â »óÅÂ¿¡¼­ ÇØ¾ßÇÑ´Ù.
+}//ì´ì§„íƒìƒ‰ì€ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬ì´ ë˜ì–´ìˆëŠ” ìƒíƒœì—ì„œ í•´ì•¼í•œë‹¤. 
