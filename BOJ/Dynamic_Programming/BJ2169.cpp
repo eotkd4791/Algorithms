@@ -5,7 +5,7 @@ using namespace std;
 
 int N, M;
 int field[1002][1002];
-int dp[3][1002][1002]; // »ó->0 ÁÂ->1 ¿ì->2
+int dp[3][1002][1002]; // from up->0 from left->1 from right->2
 
 
 int main() {
