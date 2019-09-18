@@ -30,7 +30,7 @@ int main() {
 			for (int j = 1; j <= i; j++) 
 				cin >> arr[i][j];
 		
-		cout << recur(0, 0) << '\n';
+		cout << recur(1, 1) << '\n';
 	}
 	return 0;
 }
