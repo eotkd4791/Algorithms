@@ -33,6 +33,7 @@ int main() {
 
 	for (int i = 1; i < N; i++) {
 		for (int k = 1; k <= K; k++) {
+		//dp[i-1][k-travel[도보,자전거시간]]이 0이라면 해당 도시를 거치지 않았다는 의미이므로..
 			if (k >= travel[i][0] && dp[i - 1][k - travel[i][0]] > 0)
 				dp[i][k] = max(dp[i][k], dp[i - 1][k - travel[i][0]] + travel[i][1]);
 
