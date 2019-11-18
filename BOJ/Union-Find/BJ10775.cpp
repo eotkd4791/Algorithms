@@ -2,7 +2,7 @@
 using namespace std;
 
 const int INF = 100000 + 1;
-int G, P, a, cnt;
+int G, P, gi, cnt;
 bool flag;
 int parent[INF];
 
@@ -32,11 +32,11 @@ int main()
 
 	for (int i = 0; i < P; i++)
 	{
-		cin >> a;
+		cin >> gi;
 		if (flag)
 			continue;
 
-		int tmp = find(a);
+		int tmp = find(gi);
 		if (tmp != 0)
 		{
 			merge(tmp, tmp - 1);
