@@ -5,18 +5,16 @@ using namespace std;
 int N, M, c, a, b;
 vector<int> parent, level;
 
-int search(int u) 
-{
+int search(int u) {
 	if (parent[u] == u) return u;
 	return parent[u] = search(parent[u]);
 }
 
-void merge(int u, int v) 
-{
+void merge(int u, int v) {
 	int ru = search(u); int rv = search(v); //root ±¸ÇÏ±â
 	if (ru == rv) return;
 
-	if (level[ru] > level[rv]) 
+	if (level[ru] > level[rv])  /
 		parent[rv] = ru;
 
 	else if (level[ru] < level[rv])
@@ -35,8 +33,7 @@ int main()
 	cin.tie(0);
 
 	cin >> N >> M;
-	for (int n = 0; n <= N; n++) 
-	{
+	for (int n = 0; n <= N; n++) {
 		parent.push_back(n);
 		level.push_back(1);
 	}
