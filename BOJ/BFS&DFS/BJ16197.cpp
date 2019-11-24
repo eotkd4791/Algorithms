@@ -62,8 +62,8 @@ int bfs() {
 				continue;
 			
 
-			if (OOB(nfx,nfy)) {//1¹ø µ¿Àü in
-				if (OOB(nsx,nsy)) {//2¹ø µ¿Àü in
+			if (OOB(nfx,nfy)) {//1Â¹Ã¸ ÂµÂ¿Ã€Ã¼ in
+				if (OOB(nsx,nsy)) {//2Â¹Ã¸ ÂµÂ¿Ã€Ã¼ in
 					if (!check[nfx][nfy][nsx][nsy]) {
 						check[nfx][nfy][nsx][nsy] = 1;
 						q.push({ nfx,nfy,nsx,nsy,od + 1 });
@@ -75,7 +75,7 @@ int bfs() {
 				}
 			}
 
-			else {//1¹ø µ¿Àü out
+			else {//1Â¹Ã¸ ÂµÂ¿Ã€Ã¼ out
 				if (OOB(nsx,nsy)) {//2 in
 					ret = od + 1;
 					return ret;
@@ -110,4 +110,4 @@ int main() {
 		ret = -1;
 	cout << ret;
 	return 0;
-}
+} 
