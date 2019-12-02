@@ -110,4 +110,4 @@ int main() {
 		ret = -1;
 	cout << ret;
 	return 0;
-} 
+}
