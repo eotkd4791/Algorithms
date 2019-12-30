@@ -1,9 +1,9 @@
-/*scanf·Î ÀÔ·Â ¹ÞÀ» ¶§, ¶ç¾î¾²±â³ª ÁÙ¹Ù²Þ ¾øÀÌ ÀÔ·ÂÀ» ¹Þ±â ¶§¹®¿¡
-"%1d"ÇüÅÂ·Î ÀÔ·ÂÀ» ¹Þ¾Ò´Ù.
-cnt´Â ÃÑ ´ÜÁö ¼ö, ans´Â °¢ ´ÜÁö¸¶´Ù °¡±¸¼ö¸¦ ¶æÇÔ.
-ans¸¦ result¹è¿­¿¡ ÀúÀåÇÏ¿© °ªÀ» Ãâ·ÂÇÏ¿´´Ù.
-ansÀº Å½»öÀ» ½ÃÀÛÇÏ¸é¼­ Ä«¿îÆ®¸¦ ÇØ¾ß ¿Ã¹Ù¸¥ °ªÀÌ ³ª¿Â´Ù. ±×·¡¼­
-1·Î ÃÊ±âÈ­¸¦ Çß´Ù.
+/*scanfë¡œ ìž…ë ¥ ë°›ì„ ë•Œ, ë„ì–´ì“°ê¸°ë‚˜ ì¤„ë°”ê¿ˆ ì—†ì´ ìž…ë ¥ì„ ë°›ê¸° ë•Œë¬¸ì—
+"%1d"í˜•íƒœë¡œ ìž…ë ¥ì„ ë°›ì•˜ë‹¤.
+cntëŠ” ì´ ë‹¨ì§€ ìˆ˜, ansëŠ” ê° ë‹¨ì§€ë§ˆë‹¤ ê°€êµ¬ìˆ˜ë¥¼ ëœ»í•¨.
+ansë¥¼ resultë°°ì—´ì— ì €ìž¥í•˜ì—¬ ê°’ì„ ì¶œë ¥í•˜ì˜€ë‹¤.
+ansì€ íƒìƒ‰ì„ ì‹œìž‘í•˜ë©´ì„œ ì¹´ìš´íŠ¸ë¥¼ í•´ì•¼ ì˜¬ë°”ë¥¸ ê°’ì´ ë‚˜ì˜¨ë‹¤. ê·¸ëž˜ì„œ
+1ë¡œ ì´ˆê¸°í™”ë¥¼ í–ˆë‹¤.
 */
 #include <iostream>
 #include <algorithm>
@@ -57,4 +57,4 @@ int main() {
 		printf("%d\n", result[k]);
 	}
 	return 0;
-}
+} 
