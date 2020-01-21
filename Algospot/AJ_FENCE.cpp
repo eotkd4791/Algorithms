@@ -48,5 +48,5 @@ int main() {
 		int ans = dc(v, 0, N-1);
 		cout << ans << "\n";
 	}
-	return 0;
+	return 0; 
 }
