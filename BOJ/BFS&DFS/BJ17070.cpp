@@ -68,4 +68,4 @@ int main() {
 	BFS();
 	printf("%d", cnt);
 	return 0;
-} 
+}
