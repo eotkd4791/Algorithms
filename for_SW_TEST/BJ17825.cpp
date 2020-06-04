@@ -1,56 +1,50 @@
 #include <iostream>
 #include <vector>
-#include <utility>
 using namespace std;
 
 vector<vector<int> > v(35);
 int arr[11], horse[4], score[35], ans;
 bool check[35];
-const int START = 0, FINISH = 32, FIRST = 5, SECOND = 10, THIRD = 15;
-
-//이동할 수 있는지  판단하는 함수
+const int FINISH = 32, FIRST = 5, SECOND = 10, THIRD = 15;
 
 void createGraph() {
-    int tmp=2;
-    for(int i=0; i<20; i++) {
-        v[i].push_back(i+1);
-        score[i+1]=tmp;
-        tmp+=2;
+    int tmp = 2;
+    for(int i = 0; i < 20; i++) {
+        v[i].push_back(i + 1);
+        score[i + 1] = tmp;
+        tmp += 2;
     }
-    tmp=13;
+    tmp = 13;
     v[5].push_back(21);
     score[21] = tmp;
-    tmp+=3;
-    for(int i=21; i<23; i++) {
-        v[i].push_back(i+1);
-        score[i+1] = tmp;
-        tmp+=3;
+    tmp += 3;
+    for(int i = 21; i < 23; i++) {
+        v[i].push_back(i + 1);
+        score[i + 1] = tmp;
+        tmp += 3;
     }
     v[23].push_back(29);
-    score[29]=25;
-    
-    tmp=22;
+    score[29] = 25;
+    tmp = 22;
     v[10].push_back(24);
-    score[24]=tmp;
-    tmp+=2;
+    score[24] = tmp;
+    tmp += 2;
     v[24].push_back(25);
     score[25] = tmp;
     v[25].push_back(29);
     score[29] = 25;
-    
-    tmp=28;
+    tmp = 28;
     v[15].push_back(26);
     score[26] = tmp;
-    for(int i=26; i<29; i++){
-        v[i].push_back(i+1);
-        score[i+1] = --tmp;
+    for(int i = 26; i < 29; i++){
+        v[i].push_back(i + 1);
+        score[i + 1] = --tmp;
     }
-    
-    tmp=30;
-    for(int i=29; i<31; i++) {
-        v[i].push_back(i+1);
-        score[i+1] = tmp;
-        tmp+=5;
+    tmp = 30;
+    for(int i = 29; i < 31; i++) {
+        v[i].push_back(i + 1);
+        score[i + 1] = tmp;
+        tmp += 5;
     }
     v[31].push_back(20);
     v[20].push_back(32);
@@ -59,20 +53,17 @@ void createGraph() {
 }
 
 void recur(int ordIdx, int sum) {
-    
     if(ordIdx == 10) {
         ans = ans < sum ? sum : ans;
         return;
     }
-    
-    for(int i=0; i<4; i++) {
+    for(int i = 0; i < 4; i++) {
         if(horse[i] == FINISH) continue;
-        int curNode = horse[i];
-        int idx = 0;
+        int curNode = horse[i], idx = 0;
         if(curNode == FIRST || curNode == SECOND || curNode == THIRD) idx = 1;
         int newNode = curNode;
         bool isArrived = false;
-        for(int j=0; j < arr[ordIdx]; j++) {
+        for(int j = 0; j < arr[ordIdx]; j++) {
             if(newNode == FINISH) {
                 isArrived = true;
                 break;
@@ -80,15 +71,14 @@ void recur(int ordIdx, int sum) {
             newNode = v[newNode][idx];
             idx=0;
         }
-        if(isArrived) {
+        if(isArrived) { // 이번 턴에서 도착지점에 도착함.
             check[curNode] = false;
             horse[i] = FINISH;
-            recur(ordIdx+1, sum);
+            recur(ordIdx + 1, sum);
             check[curNode] = true;
             horse[i] = curNode;
-            continue;
         }
-        if(!check[newNode]) {
+        else if(!check[newNode]) {
             check[curNode] = false;
             check[newNode] = true;
             horse[i] = newNode;
@@ -102,10 +92,9 @@ void recur(int ordIdx, int sum) {
 
 int main() {
     ios::sync_with_stdio(0); cin.tie(0);
-    for(int i=0; i<10; i++) cin >> arr[i];
+    for(int i = 0; i < 10; i++) cin >> arr[i];
     createGraph();
     recur(0, 0);
     cout << ans << '\n';
     return 0;
 }
-
