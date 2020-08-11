@@ -34,9 +34,8 @@ function solution(relation) {
   for (let i = 0; i < candidateKey.length; i++) {
     if (!check[i]) continue;
     for (let j = i+1; j < candidateKey.length; j++) 
-      if((candidateKey[i] & candidateKey[j]) === candidateKey[i] || (candidateKey[i] & candidateKey[j]) === candidateKey[j]) 
+      if((candidateKey[i] & candidateKey[j]) === candidateKey[i]) 
         check[j] = false;
   }
   return check.filter((v, i) => check[i]).length;
 }
-
