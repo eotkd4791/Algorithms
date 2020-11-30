@@ -13,15 +13,10 @@ const solution = gems => {
   });
   
   gemArr.sort((a, b) => {
-    if(a[1] - a[0] < b[1] - b[0]) {
-      return -1;
-    }
-    if(a[0] < b[0]) {
-      return -1;
-    }
+    if(a[1] - a[0] < b[1] - b[0]) return -1;
+    if(a[0] < b[0]) return -1;
     return 1;
   });
+
   return gemArr[0];
 }
-
-console.log(solution(["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"]));
