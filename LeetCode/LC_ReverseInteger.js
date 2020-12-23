@@ -1,24 +1,7 @@
 const reverse = x => {
-  const xStr = x.toString();
+  const reverseStr = (x < 0 ? (-x) : x).toString().split('').reverse().join('');
+  const reverseNum = Number(isMinus ? '-'.concat(reverseStr) : reverseStr);
 
-  let xArr = xStr.split('').reverse();
-  let isMinus = false;
-  let isOutOfRange = false;
-
-  if(xArr.length === 1) return x;
-
-  if(xArr[xArr.length - 1] === '-') {
-    isMinus = true;
-    xArr.pop();
-  }
-
-  if(xArr[0] === '0') {
-    xArr = xArr.splice(1);
-  }
-
-  const resStr = xArr.join('');
-  const result = isMinus ? '-'.concat(resStr) : resStr;
-  isOutOfRange = (Number(result) > -(1 << 31) - 1) || (Number(result) < (1 << 31));
-
-  return isOutOfRange ? 0 : result;
+  return  (2 ** 31) - 1 < reverseNum || (-2) ** 31 > reverseNum ? 0 : reverseNum;
 };
+
