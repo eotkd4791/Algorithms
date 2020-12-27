@@ -1,7 +1,6 @@
 const fs = require('fs');
 const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
 
-const T = input[0];
 const testCase = input.slice(1).map(v => v.split(' '));
 
 testCase.forEach(strArray => {
