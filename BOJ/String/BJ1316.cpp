@@ -4,7 +4,6 @@ using namespace std;
 
 int n;
 string arr[101];
-map<char, bool> mappedString;
 
 int main() {
   ios::sync_with_stdio(0);
@@ -16,12 +15,14 @@ int main() {
   int MAX = n;
 
   for(int i=0; i<n; i++) {
+    map<char, bool> mappedString;
     char latest;
+
     for(int j=0; j<arr[i].size(); j++) {
       char str = (char) arr[i][j];
 
       if(mappedString.find(str)->second) {
-        if(latest == str) {
+        if(latest != str) {
           MAX--;
           break;
         }
