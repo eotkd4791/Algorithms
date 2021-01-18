@@ -29,7 +29,7 @@ function dfs(cur) {
     if(s.has(next)) continue; 
     dfs(next);
   }
-};
+}
 
 function bfs (start) {
   const queue = [];
@@ -45,7 +45,7 @@ function bfs (start) {
       queue.push(next);
     }
   };
-};
+}
 
 dfs(V);
 console.log(result.join(' '));
