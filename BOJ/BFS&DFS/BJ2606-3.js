@@ -21,8 +21,6 @@ const merge = (nodeA, nodeB) => {
   } else {
     parent[pNodeA] = pNodeB;
   }
-
-  for(let i=1; i<=V; i++) find(i);
 };
 
 for(let i=0; i<E; i++) {
@@ -30,5 +28,6 @@ for(let i=0; i<E; i++) {
   
   merge(from, to);
 }
+for(let i=1; i<=V; i++) find(i);
 
 console.log(parent.filter(v => v === 1).length - 1);

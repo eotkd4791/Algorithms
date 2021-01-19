@@ -15,8 +15,6 @@ void merge(int u, int v) {
 
   if(uu == 1) parent[vv] = uu;
   else parent[uu] = vv;
-
-  for(int i=1; i<=V; i++) find(i);
 }
 
 int main() {
@@ -35,6 +33,8 @@ int main() {
     merge(a, b);
   }
 
+  for(int i=1; i<=V; i++) find(i);
+  
   for(int i=1; i<=V; i++) {
     if(parent[i] == 1) {
       cnt++;
