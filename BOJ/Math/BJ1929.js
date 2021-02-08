@@ -1,16 +1,20 @@
-const input = require('fs').readFileSync('/dev/stdin').toString().trim().split(' ').map(Number);
-const [M, N] = input;
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n').map(Number);
+input.pop();
 
-for(let i=M; i<=N; i++) {
-  const sqrt = Math.sqrt(i);
-  if(i === 1) continue;
+input.forEach((v, i) => {
+  let cnt = 0;
+  for(let j = v+ 1; j <= v * 2; j++) {
+    const sqrt = Math.sqrt(j);
+    if(j === 1) continue;
 
-  let isPrime = true;
-  for(let j=2; j<=sqrt; j++) {
-    if(i!==j && i % j === 0) {
-      isPrime = false;
-      break;
+    let isPrime = true;
+    for(let k = 2; k <= sqrt; k++) {
+      if(j!==k && j % k === 0) {
+        isPrime = false;
+        break;
+      }
     }
+    if(isPrime) cnt++;
   }
-  if(isPrime) console.log(i);
-}
+  console.log(cnt);
+});
