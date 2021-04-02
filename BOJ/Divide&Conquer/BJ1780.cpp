@@ -5,12 +5,12 @@ int N;
 int arr[2500][2500];
 int ans[3];
 
-void recur(int sx, int sy, int fx, int fy) {
+void recur(int sx, int sy, int size) {
   bool is_all_same = true;
 
   int init_num = arr[sx][sy];
-  for(int i=sx; i<fx; i++) {
-    for(int j=sy; j<fy; j++) {
+  for(int i=sx; i<sx + size; i++) {
+    for(int j=sy; j<sy + size; j++) {
       if(arr[i][j] != init_num) {
         is_all_same = false;
         break;
@@ -29,12 +29,12 @@ void recur(int sx, int sy, int fx, int fy) {
     }
     return;
   }
-  int range = fx - sx;
-  int size = range / 3;
+  
+  int div = size / 3;
 
-  for(int i=sx; i<sx + range; i+=size) {
-    for(int j=sy; j<sy + range; j+=size) {
-      recur(i, j, i + size, j + size);
+  for(int i=sx; i<sx + size; i += div) {
+    for(int j=sy; j<sy + size; j += div) {
+      recur(i, j, div);
     }
   }
 }
@@ -50,7 +50,7 @@ int main() {
       cin >> arr[i][j];
     }
   } 
-  recur(0, 0, N, N);
+  recur(0, 0, N);
 
   cout << ans[0] << '\n' << ans[1] << '\n' << ans[2] << '\n';
   return 0;
