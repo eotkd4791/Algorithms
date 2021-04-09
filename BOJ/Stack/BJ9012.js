@@ -4,7 +4,7 @@ const input = fs.readFileSync('/dev/stdin')
   .trim()
   .split('\n');
 
-const T = +input.shift();
+input.shift();
 
 for(const br of input) {
   const stack = [];
