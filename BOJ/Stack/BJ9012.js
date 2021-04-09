@@ -1,6 +1,5 @@
 const fs = require('fs');
 const input = fs.readFileSync('/dev/stdin')
-// const input = '6\n(())())\n(((()())()\n(()())((()))\n((()()(()))(((())))()\n()()()()(()()())()\n(()((())()('
   .toString()
   .trim()
   .split('\n');
