@@ -5,26 +5,26 @@ const input = fs.readFileSync('/dev/stdin')
   .split('\n');
 
 const [_, M] = input.shift().split(' ').map(Number);
-const tree = input[0].split(' ').map(BigInt);
+const tree = input[0].split(' ').map(Number);
 
 let ans = 0;
-let left = BigInt(0);
-let right = BigInt(2_000_000_000);
+let left =0;
+let right = 2_000_000_000;
 
 while(left<=right) {
-  const mid = ((left + right) / BigInt(2));
+  const mid = Math.floor((left + right) / 2);
 
-  let sum = BigInt(0);
+  let sum =0;
   const result = tree.some(h => {
-    sum += h > mid ? h - mid : BigInt(0);
+    sum += h > mid ? h - mid : 0;
     return sum >= M;
   });
   
   if(result) {
-    left = mid + BigInt(1);
+    left = mid + 1;
     ans = mid;
   } else {
-    right = mid - BigInt(1);
+    right = mid -1;
   }
 }
-console.log(ans.toString());
+console.log(ans);
