@@ -5,7 +5,7 @@ function input() {
   return {
     n: +n, 
     field: field.map(col => col.split(' ').map(Number))
-  }
+  };
 }
 
 function solution() {
@@ -24,7 +24,7 @@ function solution() {
       recur(sx, sy + half, half),
       recur(sx + half, sy + half, half)
     ].sort((a, b) => b - a)[1];
-  };
+  }
 }
 
 console.log(solution());
