@@ -1,10 +1,10 @@
 const fs = require('fs');
 
 function input() {
-  const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+  const [n, ...field] = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
   return {
-    n: +input.shift(), 
-    field: [...input].map(col => col.split(' ').map(Number))
+    n: +n, 
+    field: field.map(col => col.split(' ').map(Number))
   }
 }
 
@@ -16,7 +16,7 @@ function solution() {
     if(size === 1) {
       return field[sx][sy];
     }
-    
+
     const half = Math.floor(size / 2);
     return [
       recur(sx, sy, half),
