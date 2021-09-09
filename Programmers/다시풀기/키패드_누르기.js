@@ -1,7 +1,9 @@
 function solution(numbers, hand) {
-  let answer = '';
   const mainHand = hand === 'left' ? 0 : 1;
-  const thumbPos = [];
+  const thumbPos = [
+    { x: 3, y: 0 },
+    { x: 3, y: 2 },
+  ];
   const keypad = [
     { x: 3, y: 1, num: 0 },
     { x: 0, y: 0, num: 1 },
@@ -15,43 +17,41 @@ function solution(numbers, hand) {
     { x: 2, y: 2, num: 9 },
   ];
 
-  numbers.forEach((number) => {
-    const { x, y, num } = keypad[number];
+  return numbers
+    .map((number) => {
+      const { x, y, num } = keypad[number];
 
-    switch (num) {
-      case 1:
-      case 4:
-      case 7:
-        thumbPos[0] = { x, y };
-        answer += 'L';
-        break;
-      case 3:
-      case 6:
-      case 9:
-        thumbPos[1] = { x, y };
-        answer += 'R';
-        break;
+      if (/[147]/.test(num)) {
+        return moveLeftThumb(x, y);
+      } else if (/[369]/.test(num)) {
+        return moveRightThumb(x, y);
+      }
 
-      default:
-        const [left, right] = thumbPos;
-        const lDist = Math.abs(left.x - x) + Math.abs(left.y - y);
-        const rDist = Math.abs(right.x - x) + Math.abs(right.y - y);
+      const [left, right] = thumbPos;
+      const lDist = Math.abs(left.x - x) + Math.abs(left.y - y);
+      const rDist = Math.abs(right.x - x) + Math.abs(right.y - y);
 
-        if (lDist < rDist) {
-          thumbPos[0] = { x, y };
-          answer += 'L';
-        } else if (lDist > rDist) {
-          thumbPos[1] = { x, y };
-          answer += 'R';
-        } else {
-          thumbPos[mainHand] = { x, y };
-          answer += hand.slice(0, 1).toUpperCase();
-        }
-    }
-  });
-  return answer;
+      if (lDist < rDist) {
+        return moveLeftThumb(x, y);
+      } else if (lDist > rDist) {
+        return moveRightThumb(x, y);
+      } else {
+        thumbPos[mainHand] = { x, y };
+        return hand[0].toUpperCase();
+      }
+    })
+    .join('');
+
+  function moveLeftThumb(x, y) {
+    thumbPos[0] = { x, y };
+    return 'L';
+  }
+  function moveRightThumb(x, y) {
+    thumbPos[1] = { x, y };
+    return 'R';
+  }
 }
 
-console.log(solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5], 'right'), 'LRLLLRLLRRL');
-console.log(solution([7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2], 'left'), 'LRLLRRLLLRR');
-console.log(solution([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], 'right'), 'LLRLLRLLRL');
+console.log(solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5], 'right') === 'LRLLLRLLRRL');
+console.log(solution([7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2], 'left') === 'LRLLRRLLLRR');
+console.log(solution([1, 2, 3, 4, 5, 6, 7, 8, 9, 0], 'right') === 'LLRLLRLLRL');
