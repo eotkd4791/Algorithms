@@ -6,11 +6,7 @@ function solution(p) {
       return str;
     }
     const [u, v] = splitUV(str);
-    if (isCorrect(u)) {
-      return u + recur(v);
-    } else {
-      return '(' + recur(v) + ')' + flipBrackets(removeSideBrackets(u));
-    }
+    return isCorrect(u) ? u + recur(v) : '(' + recur(v) + ')' + flipBrackets(removeSideBrackets(u));
   }
 
   function splitUV(str) {
