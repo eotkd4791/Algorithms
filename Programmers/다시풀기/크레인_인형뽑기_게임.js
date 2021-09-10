@@ -1,6 +1,6 @@
 function solution(board, moves) {
   let answer = 0;
-  const pickedDolls = [];
+  let pickedDolls = [];
   const n = board.length;
 
   moves.forEach((move) => {
@@ -15,12 +15,11 @@ function solution(board, moves) {
       const pickedDoll = board[rowIndex][colIndex];
       board[rowIndex][colIndex] = 0;
 
-      if (pickedDolls.length > 0 && pickedDolls[pickedDolls.length - 1] === pickedDoll) {
-        pickedDolls.pop();
-        answer += 2;
-      } else {
-        pickedDolls.push(pickedDoll);
-      }
+      const lastDoll = pickedDolls.pop();
+
+      lastDoll === pickedDoll
+        ? (answer += 2)
+        : (pickedDolls = pickedDolls.concat(lastDoll ? [lastDoll, pickedDoll] : pickedDoll));
     }
   });
   return answer;
