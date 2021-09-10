@@ -1,36 +1,51 @@
 function solution(orders, course) {
-  const cnt = Array(27).fill(0);
-  const um = {};
-  const menu = JSON.parse(JSON.stringify(new Array(27).fill(new Array(21).fill([]))));
-
-  const answer = [];
+  let answer = [];
+  const visit = {};
+  const cnt = {};
+  const check = Array(27).fill(false);
+  const temp = Array(27).fill([]);
 
   orders.forEach((order) => {
     const orderedStr = order.split('').sort().join('');
     recur(orderedStr, 0, '');
   });
 
-  for (const i of course) {
-    if (cnt[i] > 1) {
-      for (const s of menu[i][cnt[i]]) {
-        answer.push(s);
+  for (const orderComb in visit) {
+    if (visit[orderComb] > 1) {
+      const n = orderComb.length;
+      if (n in cnt) {
+        if (cnt[n] < visit[orderComb]) {
+          cnt[n] = visit[orderComb];
+          temp[n] = [orderComb];
+        } else if (cnt[n] === visit[orderComb]) {
+          temp[n].push(orderComb);
+        }
+      } else {
+        cnt[n] = visit[orderComb];
+        temp[n] = [orderComb];
       }
     }
   }
 
-  return answer.sort();
+  return [
+    ...new Set(course.reduce((acc, crs) => acc.concat(temp[crs]), []).map((ans) => ans.split('').sort().join(''))),
+  ].sort();
 
-  function recur(s, idx, made) {
-    if (made.length > 1) {
-      made in um ? um[made]++ : (um[made] = 1);
-      cnt[made.length] = Math.max(cnt[made.length], um[made]);
-      menu[made.length][um[made]].push(made);
+  function recur(order, index, str) {
+    if (str.length > 1) {
+      visit[str] = str in visit ? visit[str] + 1 : 1;
     }
 
-    for (let i = idx; i < s.length; i++) {
-      recur(s, i + 1, made + s[i]);
+    for (let i = index; i < order.length; i++) {
+      const charIndex = order[i].charCodeAt() - 65;
+      if (!check[charIndex]) {
+        check[charIndex] = true;
+        recur(order, index + 1, str + order[i]);
+        check[charIndex] = false;
+      }
     }
   }
 }
 
 console.log(solution(['ABCFG', 'AC', 'CDE', 'ACDE', 'BCFG', 'ACDEH'], [2, 3, 4]));
+console.log(solution(['ABCDE', 'ABCDE', 'ACD', 'ACD', 'AD', 'AD'], [2, 3, 4]));
