@@ -5,10 +5,6 @@ using namespace std;
 
 int N, M;
 const int MAX = 2000;
-const int UP = 0;
-const int LEFT = 1;
-const int DOWN = 2;
-const int RIGHT = 3;
 const int dx[] = {-1, 0, 1, 0};
 const int dy[] = {0, -1, 0, 1};
 int Field[MAX][MAX];
@@ -18,6 +14,41 @@ queue<pair<int, pair<int, int> > >Q;
 
 bool OutOfBorder(int x, int y) {
   return 0 > x || x >= N || M <= y || y < 0;
+}
+
+int GetChangedDirection(int ObjectNumber, int CurrentDir) {
+  const int UP = 0, LEFT = 1, DOWN = 2, RIGHT = 3;
+
+  if(ObjectNumber == 1) {
+    if(CurrentDir == LEFT || CurrentDir == RIGHT) {
+      return (CurrentDir + 2) % 4;
+    }
+  } else if(ObjectNumber == 2) {
+    if(CurrentDir == UP || CurrentDir == DOWN) {
+      return (CurrentDir + 2) % 4;
+    }
+  } else if(ObjectNumber == 3) {
+    if(CurrentDir == UP) {
+      return RIGHT;
+    } else if(CurrentDir == LEFT) {
+      return DOWN;
+    } else if(CurrentDir == DOWN) {
+      return LEFT;
+    } else if(CurrentDir == RIGHT) {
+      return UP;
+    }
+  } else if(ObjectNumber == 4) {
+    if(CurrentDir == UP) {
+      return LEFT;
+    } else if(CurrentDir == LEFT) {
+      return UP;
+    } else if(CurrentDir == DOWN) {
+      return RIGHT;
+    } else if(CurrentDir == RIGHT) {
+      return DOWN;
+    }
+  }
+  return CurrentDir;
 }
 
 void BFS() {
@@ -33,39 +64,22 @@ void BFS() {
     if(!OutOfBorder(nx, ny) && !Visit[nx][ny][nd]) {
       Answer[nx][ny]++;
       Visit[nx][ny][nd] = true;
-      
-      if(Field[nx][ny] == 1) {
-        if(nd == LEFT || nd == RIGHT) {
-          nd = (nd + 2) % 4;
-        }
-      } else if(Field[nx][ny] == 2) {
-        if(nd == UP || nd == DOWN) {
-          nd = (nd + 2) % 4;
-        }
-      } else if(Field[nx][ny] == 3) {
-        if(nd == UP) {
-          nd = RIGHT;
-        } else if(nd == LEFT) {
-          nd = DOWN;
-        } else if(nd == DOWN) {
-          nd = LEFT;
-        } else if(nd == RIGHT) {
-          nd = UP;
-        }
-      } else if(Field[nx][ny] == 4) {
-        if(nd == UP) {
-          nd = LEFT;
-        } else if(nd == LEFT) {
-          nd = UP;
-        } else if(nd == DOWN) {
-          nd = RIGHT;
-        } else if(nd == RIGHT) {
-          nd = DOWN;
-        }
-      }
+      nd = GetChangedDirection(Field[nx][ny], nd);
       Q.push(make_pair(nd, make_pair(nx, ny)));
     }
   }
+}
+
+void PrintAnswer() {
+  int Count = 0;
+  for(int i=0; i<N; i++) {
+    for(int j=0; j<M; j++) {
+      if(Answer[i][j] > 0) {
+        Count++;
+      }
+    }
+  }
+  cout << Count << '\n';
 }
 
 int main() {
@@ -86,14 +100,6 @@ int main() {
     }
   }
   BFS();
-  int Count = 0;
-  for(int i=0; i<N; i++) {
-    for(int j=0; j<M; j++) {
-      if(Answer[i][j] > 0) {
-        Count++;
-      }
-    }
-  }
-  cout << Count << '\n';
+  PrintAnswer();
   return 0;
 }
