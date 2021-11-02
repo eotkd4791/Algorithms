@@ -28,12 +28,9 @@ int recur(int n) {
     int square = i * i;
     int count = recur(n - square) + recur(square);
 
-    if(dp[n] == -1) {
-      dp[n] = count;
-    }
-    else {
-      dp[n] = min(dp[n], count);
-    }
+    dp[n] = dp[n] == -1
+      ? count
+      : dp[n] = min(dp[n], count);
   }
   return dp[n];
 }
@@ -43,7 +40,6 @@ int main() {
   cin.tie(0);
 
   cin >> N;
-
   FillSquares();
   cout << recur(N) << '\n';
   return 0;
