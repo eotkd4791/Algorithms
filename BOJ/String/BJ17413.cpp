@@ -9,7 +9,6 @@ int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  cin.clear();
   getline(cin, S);
 
   int Start = 0;
