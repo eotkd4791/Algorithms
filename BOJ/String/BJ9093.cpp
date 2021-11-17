@@ -10,11 +10,8 @@ int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  string FlushBuffer;
   cin >> T;
-
-  getline(cin, FlushBuffer);
-
+  cin.ignore();
   while(T--) {
     getline(cin, Words);
 
