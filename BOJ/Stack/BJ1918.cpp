@@ -26,18 +26,16 @@ int main() {
     if('A' <= Infix[i] && Infix[i] <= 'Z') {
       Answer += Infix[i];
     }
-    else if('(' == Infix[i] || Infix[i] == ')') {
-      if('(' == Infix[i]) {
-        S.push(Infix[i]);
-      }
-      else {
-        while(!S.empty() && S.top() != '(') {
-          Answer += S.top();
-          S.pop();
-        }
+    else if('(' == Infix[i]) {
+      S.push(Infix[i]);
+    }
+    else if(')' == Infix[i]) {
+      while(!S.empty() && S.top() != '(') {
+        Answer += S.top();
         S.pop();
       }
-    } 
+      S.pop();
+    }
     else {
       while(!S.empty() && Priority(S.top()) >= Priority(Infix[i])) {
         Answer += S.top();
