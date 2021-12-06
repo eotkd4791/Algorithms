@@ -2,15 +2,15 @@
 #include <stack>
 using namespace std;
 
-string Infix;
-stack<char> S;
+string Input;
 string Answer;
+stack<char> S;
 
 int Priority(char letter) {
-  if(letter == '(') {
+  if(letter == '+' || letter == '-') {
     return 0;
   }
-  if(letter == '+' || letter == '-') {
+  if(letter == '*' || letter == '/') {
     return 1;
   }
   return 2;
@@ -20,16 +20,15 @@ int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
-  cin >> Infix;
-
-  for(int i=0; i<Infix.size(); i++) {
-    if('A' <= Infix[i] && Infix[i] <= 'Z') {
-      Answer += Infix[i];
+  cin >> Input;
+  for(const auto& letter : Input) {
+    if('A' <= letter && letter <= 'Z') {
+      Answer += letter;
     }
-    else if('(' == Infix[i]) {
-      S.push(Infix[i]);
+    else if(letter == '(') {
+      S.push(letter);
     }
-    else if(')' == Infix[i]) {
+    else if(letter == ')') {
       while(!S.empty() && S.top() != '(') {
         Answer += S.top();
         S.pop();
@@ -37,19 +36,17 @@ int main() {
       S.pop();
     }
     else {
-      while(!S.empty() && Priority(S.top()) >= Priority(Infix[i])) {
+      while(!S.empty() && S.top() != '(' && Priority(S.top()) >= Priority(letter)) {
         Answer += S.top();
         S.pop();
       }
-      S.push(Infix[i]);
+      S.push(letter);
     }
   }
-
   while(!S.empty()) {
     Answer += S.top();
     S.pop();
   }
-
   cout << Answer << '\n';
   return 0;
 }
