@@ -20,7 +20,7 @@ void getPrime() {
     
     for(int i = 2; i <= sqrt(INF); i++) {
         if(check[i]) continue;
-        for(int j=i+i; j<=INF;a j+=i)
+        for(int j=i+i; j<=INF; j+=i)
             check[j]=true;
         
     }
