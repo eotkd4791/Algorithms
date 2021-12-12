@@ -13,22 +13,19 @@ function checkPalindrome() {
   return true;
 }
 
-function checkSubstring() {
-  let left = 0;
-  let right = n - 1;
-  while (left !== right && input[left] === input[right]) {
-    right--;
+function checkAllSameLetters() {
+  const set = new Set();
+  for (const s of input) {
+    set.add(s);
   }
-  return right - left + 1;
+  return set.size === 1;
 }
 
 function solution() {
-  if (checkPalindrome()) {
-    const answer = checkSubstring();
-    return answer === 1 ? -1 : Math.max(answer, n - 1);
-  } else {
-    return n;
+  if (checkAllSameLetters()) {
+    return -1;
   }
+  return checkPalindrome() ? n - 1 : n;
 }
 
 console.log(solution());
