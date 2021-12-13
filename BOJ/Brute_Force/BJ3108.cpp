@@ -5,35 +5,35 @@ using namespace std;
 
 const int INF = 2001;
 int N;
-int field[INF][INF];
-bool visit[INF][INF];
-int answer;
-queue<pair<int,int> > q;
-const int dx[] = {0, 0, -1, 1};
-const int dy[] = {1, -1, 0, 0};
+int Field[INF][INF];
+bool Visit[INF][INF];
+int Answer;
+queue<pair<int, int> > Q;
+const int Dx[] = {0, 0, -1, 1};
+const int Dy[] = {1, -1, 0, 0};
 
-int changeRange(int a) {
+int ChangeRange(int a) {
   return (a + 500) * 2;
 }
 
-bool isInside(int x, int y) {
+bool IsInside(int x, int y) {
   return 0 <= x && x < INF && 0 <= y && y < INF;
 }
 
-void bfs(int x, int y) {
-  q.push(make_pair(x, y));
+void BFS(int x, int y) {
+  Q.push(make_pair(x, y));
 
-  while(!q.empty()) {
-    int x = q.front().first;
-    int y = q.front().second;
-    q.pop();
+  while(!Q.empty()) {
+    int x = Q.front().first;
+    int y = Q.front().second;
+    Q.pop();
 
-    for(int dir=0; dir<4; dir++) {
-      int nx = x + dx[dir];
-      int ny = y + dy[dir];
-      if(isInside(nx, ny) && !visit[nx][ny] && field[nx][ny]) {
-          visit[nx][ny] = true;
-          q.push(make_pair(nx, ny));
+    for(int dir = 0; dir < 4; dir++) {
+      int nx = x + Dx[dir];
+      int ny = y + Dy[dir];
+      if(IsInside(nx, ny) && !Visit[nx][ny] && Field[nx][ny]) {
+          Visit[nx][ny] = true;
+          Q.push(make_pair(nx, ny));
       }
     }
   }
@@ -44,36 +44,36 @@ int main() {
   cin.tie(0);
 
   cin >> N;
-  for(int n=0; n<N; n++) {
+  for(int n = 0; n < N; n++) {
     int a, b, c, d;
     cin >> a >> b >> c >> d;
 
-    int A = changeRange(a);
-    int B = changeRange(b);
-    int C = changeRange(c);
-    int D = changeRange(d);
+    int A = ChangeRange(a);
+    int B = ChangeRange(b);
+    int C = ChangeRange(c);
+    int D = ChangeRange(d);
 
-    for(int i=A; i<=C; i++) {
-      field[i][B] = 1;
-      field[i][D] = 1;
+    for(int i = A; i <= C; i++) {
+      Field[i][B] = 1;
+      Field[i][D] = 1;
     }
-    for(int i=B; i<=D; i++) {
-      field[A][i] = 1;
-      field[C][i] = 1;
+    for(int i = B; i <= D; i++) {
+      Field[A][i] = 1;
+      Field[C][i] = 1;
     }
   }
 
-  bfs(changeRange(0), changeRange(0));
-  for(int i=0; i<INF; i++) {
-    for(int j=0; j<INF; j++) {
-      if(!visit[i][j] && field[i][j]) {
-        visit[i][j] = true;
-        bfs(i, j);
-        answer++;
+  BFS(ChangeRange(0), ChangeRange(0));
+  for(int i = 0; i < INF; i++) {
+    for(int j = 0; j < INF; j++) {
+      if(!Visit[i][j] && Field[i][j]) {
+        Visit[i][j] = true;
+        BFS(i, j);
+        Answer++;
       }
     }
   }
 
-  cout << answer << '\n';
+  cout << Answer << '\n';
   return 0;
 }
