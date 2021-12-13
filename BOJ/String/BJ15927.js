@@ -17,8 +17,11 @@ function checkAllSameLetters() {
   const set = new Set();
   for (const s of input) {
     set.add(s);
+    if (set.size > 1) {
+      return false;
+    }
   }
-  return set.size === 1;
+  return true;
 }
 
 function solution() {
