@@ -1,32 +1,18 @@
-function solution(answers) {
+function solution(answers) {    
     const first = [1,2,3,4,5];
     const second = [2,1,2,3,2,4,2,5];
     const third = [3,3,1,1,2,2,4,4,5,5];
     
-    const firstUserAnswerCount = computeAnswerCount(first);
-    const secondUserAnswerCount = computeAnswerCount(second); 
-    const thirdUserAnswerCount = computeAnswerCount(third);
-    const maxScore = Math.max(
-        firstUserAnswerCount,
-        secondUserAnswerCount,
-        thirdUserAnswerCount
-    );
+    const students = [
+        answers.filter((a, i) => a === first[i % first.length]).length,
+        answers.filter((a, i) => a === second[i % second.length]).length,
+        answers.filter((a, i) => a === third[i % third.length]).length
+    ];
     
-    return [
-        firstUserAnswerCount, 
-        secondUserAnswerCount, 
-        thirdUserAnswerCount
-    ].map((count, index) => ({ user: index + 1, count }))
-     .filter(({ user, count }) => count === maxScore)
-     .map(({ user }) => user);
+    const max = Math.max(...students);
     
-    function computeAnswerCount(arr) {
-        let countMatchedAnswer = 0;
-        answers.forEach((a, i) => {
-            if(a === arr[i % arr.length]) {
-                countMatchedAnswer++;
-            }
-        });
-        return countMatchedAnswer;
-    }
+    return students.reduce((acc, cur, index) => 
+        cur === max
+            ? acc.concat(index + 1)
+            : acc, []);
 }
