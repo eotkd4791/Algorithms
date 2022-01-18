@@ -26,8 +26,8 @@ function solution(s) {
     let standardStr = '';
     let compareStr = '';
     for (let si = 0; si < n; si += ci) {
-      standardStr = s.substr(si, ci);
-      compareStr = s.substr(si + ci, ci);
+      standardStr = s.substring(si, si + ci);
+      compareStr = s.substring(si + ci, si + 2 * ci);
       if (standardStr === compareStr) {
         repeatCount++;
       } else if (repeatCount > 1) {
