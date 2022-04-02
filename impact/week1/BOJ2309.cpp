@@ -1,40 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> heights;
-int a, sum;
+int heights[9];
 
 int main() {
   ios::sync_with_stdio(0);
   cin.tie(0);
 
   for(int i=0; i<9; i++) {
-    cin >> a;
-    heights.push_back(a);
-    sum += a;
+    cin >> heights[i];
   }
 
-  sort(heights.begin(), heights.end());
-
-  bool flag = false;
-  pair<int, int> invalidDwarfs;
-  for(int i=0; i<9; i++) {
-    for(int j=0; j<9; j++) {
-      if(i == j) continue;
-
-      if(heights[i] + heights[j] == sum - 100) {
-        invalidDwarfs = { heights[i], heights[j] };
-        flag = true;
-        break;
+  sort(heights, heights + 9);
+  do {
+    int sum = 0;
+    for(int i=0; i<7; i++) {
+      sum += heights[i];
+    }
+    if(sum == 100) {
+      for(int i=0; i<7; i++) {
+        cout << heights[i] << '\n';
       }
+      break;
     }
-    if(flag) break;
-  }
-
-  for(const auto& height : heights) {
-    if(height != invalidDwarfs.first && height != invalidDwarfs.second) {
-      cout << height << '\n';
-    }
-  }
+  } while(next_permutation(heights, heights + 9));
   return 0;
 }
