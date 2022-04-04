@@ -9,12 +9,7 @@ int main() {
   cin.tie(0);
 
   cin >> S;
-  for(const auto& s : S) {
-    cnt[s - 'a']++;
-  }
-
-  for(int i=0; i<26; i++) {
-    cout << cnt[i] << ' ';
-  }
+  for(const auto& s : S) cnt[s - 'a']++;
+  for(int i = 0; i < 26; i++) cout << cnt[i] << ' ';
   return 0;
 }
