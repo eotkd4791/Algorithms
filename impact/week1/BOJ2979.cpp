@@ -18,16 +18,10 @@ int main() {
 
   for(int ti = 0; ti <=100; ti++) {
     for(int i = 0; i < 3; i++) {
-      if(ti == t[i].first) {
-        cnt++;
-      }
-      if(ti == t[i].second) {
-        cnt--;
-      }
+      if(ti == t[i].first) cnt++;
+      if(ti == t[i].second) cnt--;
     }
-    if(cnt > -1) {
-      sum += c[cnt] * (cnt + 1);
-    }
+    if(cnt > -1) sum += c[cnt] * (cnt + 1);
   }
   cout << sum;
   return 0;
